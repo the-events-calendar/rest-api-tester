@@ -10,26 +10,26 @@
  * @var string $documentation_json
  */
 ?>
-<div id="trap-wrap">
+<div id="mtrat-wrap">
 
-	<div id="trap-json" class="hidden">
+	<div id="mtrat-json" class="hidden">
 		<?php echo $json; ?>
 	</div>
 
-	<input type="hidden" name="trap-nonce" id="trap-nonce" value="">
-	<input type="hidden" name="trap-path" id="trap-path" value="<?php echo $current_path; ?>">
-	<input type="hidden" name="trap-url" id="trap-url" value="<?php echo $current_url; ?>">
+	<input type="hidden" name="mtrat-nonce" id="mtrat-nonce" value="">
+	<input type="hidden" name="mtrat-path" id="mtrat-path" value="<?php echo $current_path; ?>">
+	<input type="hidden" name="mtrat-url" id="mtrat-url" value="<?php echo $current_url; ?>">
 
 	<h2>Response</h2>
-	<div id="trap-response" class="full-width medium-height"></div>
+	<div id="mtrat-response" class="full-width medium-height"></div>
 
 	<br>
 
 	<h3>Request</h3>
 	<div class="request">
 		<div class="margin">
-			<label for="trap-request-method">Method:</label>
-			<select name="trap-request-method" id="trap-request-method">
+			<label for="mtrat-request-method">Method:</label>
+			<select name="mtrat-request-method" id="mtrat-request-method">
 				<option value="get">GET</option>
 				<option value="post">POST</option>
 				<option value="put">PUT</option>
@@ -40,8 +40,8 @@
 		</div>
 
 		<div class="margin">
-			<label for="trap-user-id">User:</label>
-			<select name="trap-user-id" id="trap-user-id">
+			<label for="mtrat-user-id">User:</label>
+			<select name="mtrat-user-id" id="mtrat-user-id">
 				<option value="0">Visitor (not logged-in)</option>
 				<?php /** @var WP_User $user */
 				foreach ( $users as $user ) : ?>
@@ -117,17 +117,17 @@
 	</div>
 
 	<div>
-		<button id="trap-request" class="button-primary margin">
+		<button id="mtrat-request" class="button-primary margin">
 			Request
 		</button>
 	</div>
 
 	<?php if ( ! $is_documentation ) : ?>
 		<h3>Documentation</h3>
-		<div id="trap-documentation-json" class="hidden">
+		<div id="mtrat-documentation-json" class="hidden">
 			<?php echo $documentation_json; ?>
 		</div>
-		<div id="trap-documentation"></div>
+		<div id="mtrat-documentation"></div>
 	<?php endif; ?>
 </div>
 

@@ -1,10 +1,10 @@
 <?php
 
 
-abstract class Tribe__RAP__Endpoints__Base {
+abstract class Tribe__RAT__Endpoints__Base {
 
 	/**
 	 * @var string
 	 */
-	protected $namespace = 'trap';
+	protected $namespace = 'trat';
 }

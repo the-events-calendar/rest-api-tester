@@ -1,39 +1,39 @@
 <?php
 
-class Tribe__RAP__Options_Page {
+class Tribe__RAT__Options_Page {
 
 	public function register_menu() {
 		add_menu_page(
 			'The Events Calendar REST API Tester',
 			'TEC REST Tester',
 			'administrator',
-			'trap-tester',
-			array( tribe( 'trap.options' ), 'render' )
+			'mtrat-tester',
+			array( $this, 'render' )
 		);
 	}
 
 	public function enqueue_scripts() {
-		if ( empty( $_GET['page'] ) || 'trap-tester' !== $_GET['page'] ) {
+		if ( empty( $_GET['page'] ) || 'mtrat-tester' !== $_GET['page'] ) {
 			return;
 		}
 
 		wp_enqueue_style(
-			'trap-style',
-			plugins_url( '/assets/css/trap-style.css', tribe()->getVar( 'trap.main-file' ) )
+			'mtrat-style',
+			plugins_url( '/assets/css/mtrat-style.css', tribe()->getVar( 'mtrat.main-file' ) )
 		);
 
 		wp_register_script(
 			'renderjson',
-			plugins_url( '/node_modules/renderjson/renderjson.js', tribe()->getVar( 'trap.main-file' ) )
+			plugins_url( '/node_modules/renderjson/renderjson.js', tribe()->getVar( 'mtrat.main-file' ) )
 		);
 
 		wp_enqueue_script(
-			'trap-js',
-			plugins_url( '/assets/js/trap-script.js', tribe()->getVar( 'trap.main-file' ) ),
+			'mtrat-js',
+			plugins_url( '/assets/js/mtrat-script.js', tribe()->getVar( 'mtrat.main-file' ) ),
 			array( 'jquery', 'renderjson' )
 		);
 
-		wp_localize_script( 'trap-js', 'Trap', array(
+		wp_localize_script( 'mtrat-js', 'mtrat', array(
 			'button_text'                  => 'Request',
 			'button_loading_response_text' => 'Making the request...',
 		) );
@@ -41,7 +41,7 @@ class Tribe__RAP__Options_Page {
 
 	public function render() {
 		$tabs = new Tribe__Tabbed_View();
-		$tabs->set_url( '?page=trap-tester' );
+		$tabs->set_url( '?page=mtrat-tester' );
 
 		/** @var \Tribe__Events__REST__V1__Main $rest_main */
 		$rest_main = tribe( 'tec.rest-v1.main' );
@@ -54,7 +54,7 @@ class Tribe__RAP__Options_Page {
 
 		$priority = 0;
 		foreach ( $endpoints as $path => $endpoint ) {
-			$tabbed_view = new Tribe__RAP__Tabs__Endpoint( $tabs, sanitize_title( $path ) );
+			$tabbed_view = new Tribe__RAT__Tabs__Endpoint( $tabs, sanitize_title( $path ) );
 			$tabbed_view->set_label( esc_html( $path ) );
 			$tabbed_view->set_endpoint( $endpoint );
 			$tabbed_view->set_priority( $priority );
@@ -67,7 +67,7 @@ class Tribe__RAP__Options_Page {
 
 		echo $tabs->render();
 
-		/** @var Tribe__RAP__Tabs__Endpoint $current */
+		/** @var Tribe__RAT__Tabs__Endpoint $current */
 		$current = $tabs->get_active();
 		/** @var \Tribe__Documentation__Swagger__Provider_Interface $current_endpoint */
 		$current_endpoint = $current->get_endpoint();
@@ -92,6 +92,6 @@ class Tribe__RAP__Options_Page {
 		);
 
 		/** @noinspection PhpIncludeInspection */
-		include tribe()->getVar( 'trap.templates' ) . '/options-page.php';
+		include tribe()->getVar( 'mtrat.templates' ) . '/options-page.php';
 	}
 }

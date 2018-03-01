@@ -1,11 +1,11 @@
 <?php
 
 /**
- * Class Tribe__RAP__Nonce
+ * Class Tribe__RAT__Nonce
  *
  * Handles the spoofing (hacking) of the user for the purpose of passing the WP REST API nonce checks.
  */
-class Tribe__RAP__Nonce {
+class Tribe__RAT__Nonce {
 
 	/**
 	 * Stores the just generated logged in cookie for the user in the the COOKIE superglobal.

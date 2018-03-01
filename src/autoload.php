@@ -1,7 +1,7 @@
 <?php
-function trap_autoload( $class ) {
-	$prefix = 'Tribe__RAP__';
-	if ( strpos( $class, $prefix ) === 0 ) {
+function mtrat_autoload( $class ) {
+	$prefix = 'Tribe__RAT__';
+	if ( 0 === strpos( $class, $prefix ) ) {
 		$class_path = str_replace( array( $prefix, '__' ), array(
 			'',
 			DIRECTORY_SEPARATOR,
@@ -15,4 +15,4 @@ function trap_autoload( $class ) {
 	return false;
 }
 
-spl_autoload_register( 'trap_autoload' );
+spl_autoload_register( 'mtrat_autoload' );

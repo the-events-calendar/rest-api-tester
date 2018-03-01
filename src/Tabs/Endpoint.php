@@ -1,7 +1,7 @@
 <?php
 
 
-class Tribe__RAP__Tabs__Endpoint extends Tribe__Tabbed_View__Tab {
+class Tribe__RAT__Tabs__Endpoint extends Tribe__Tabbed_View__Tab {
 
 	/**
 	 * @var Tribe__Events__REST__V1__Endpoints__Base

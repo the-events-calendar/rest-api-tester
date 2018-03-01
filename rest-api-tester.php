@@ -1,43 +1,40 @@
 <?php
 /*
-Plugin Name: The Events Calendar REST API Tester
-Plugin URI: https://theeventscalendar.com/
-Description: Test The Events Calendar REST API with a fancy UI
+Plugin Name: REST API Tester
+Plugin URI: https://tri.be/
+Description: Test WordPress REST APIs from within WordPress
 Version: 0.1.0
-Author: Modern Tribe
+Author: Modern Tribe, Inc.
 */
 
 include 'src/autoload.php';
+include 'vendor/autoload_52.php';
 
 // after TEC
-add_action( 'plugins_loaded', 'trap_init', 99 );
+add_action( 'plugins_loaded', 'mtrat_init', 99 );
 
-function trap_notice() {
-	?>
-	<div class="error notice">
-		<p><b>The Events Calendar plugin is not activated!</b></p>
-		<p>The Events Calendar REST API Tester plugin will not work until The Events Calendar is not activated.</p>
-	</div>
-	<?php
-}
+function mtrat( $classOrInterface = null ) {
+	static $container;
 
-function trap_init() {
-	if ( ! class_exists( 'Tribe__Events__REST__V1__Main' ) ) {
-		add_action( 'admin_notices', 'trap_notice' );
+	if ( null == $classOrInterface ) {
+		if ( null === $container ) {
+			$container = new tad_DI52_Container();
+		}
 
-		return;
+		return $container;
 	}
 
-	tribe()->setVar( 'trap.main-file', __FILE__ );
-	tribe()->setVar( 'trap.templates', dirname( __FILE__ ) . '/src/templates' );
+	return $container->make( $classOrInterface );
+}
 
-	$options = new Tribe__RAP__Options_Page();
-	$nonce   = new Tribe__RAP__Nonce();
+function mtrat_init() {
+	$container= mtrat();
 
-	tribe_singleton( 'trap.options', $options );
-	tribe_singleton( 'trap.nonce', $nonce );
+	$container->setVar( 'main-file', __FILE__ );
+	$container->setVar( 'templates', dirname( __FILE__ ) . '/src/templates' );
 
-	add_action( 'admin_menu', array( $options, 'register_menu' ) );
-	add_action( 'admin_enqueue_scripts', array( $options, 'enqueue_scripts' ) );
-	add_action( 'rest_api_init', array( $nonce, 'maybe_spoof_user' ) );
+	add_action( 'admin_menu', $container->callback( 'Tribe__RAT__Options_Page', 'register_menu' ) );
+
+	add_action( 'admin_enqueue_scripts', $container->callback( 'Tribe__RAT__Options_Page', 'enqueue_scripts' ) );
+	add_action( 'rest_api_init', $container->callback( 'Tribe__RAT__Nonce', 'maybe_spoof_user' ) );
 }

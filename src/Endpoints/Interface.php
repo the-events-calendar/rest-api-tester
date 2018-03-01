@@ -1,7 +1,7 @@
 <?php
 
 
-interface Tribe__RAP__Endpoints__Interface {
+interface Tribe__RAT__Endpoints__Interface {
 
 	public function get_url();
 
