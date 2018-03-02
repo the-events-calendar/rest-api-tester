@@ -4,8 +4,8 @@ class Tribe__RAT__Options_Page {
 
 	public function register_menu() {
 		add_menu_page(
-			'The Events Calendar REST API Tester',
-			'TEC REST Tester',
+			'REST API Tester',
+			'REST API Tester',
 			'administrator',
 			'mtrat-tester',
 			array( $this, 'render' )
