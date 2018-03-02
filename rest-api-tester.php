@@ -31,10 +31,12 @@ function mtrat_init() {
 	$container= mtrat();
 
 	$container->setVar( 'main-file', __FILE__ );
+	$container->setVar( 'main-dir', dirname( __FILE__ ) );
 	$container->setVar( 'templates', dirname( __FILE__ ) . '/src/templates' );
 
-	add_action( 'admin_menu', $container->callback( 'Tribe__RAT__Options_Page', 'register_menu' ) );
+	$container->singleton( 'Tribe__RAT__Options_Page', 'Tribe__RAT__Options_Page' );
 
+	add_action( 'admin_menu', $container->callback( 'Tribe__RAT__Options_Page', 'register_menu' ) );
 	add_action( 'admin_enqueue_scripts', $container->callback( 'Tribe__RAT__Options_Page', 'enqueue_scripts' ) );
 	add_action( 'rest_api_init', $container->callback( 'Tribe__RAT__Nonce', 'maybe_spoof_user' ) );
 }
