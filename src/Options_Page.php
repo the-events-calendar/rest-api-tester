@@ -19,17 +19,17 @@ class Tribe__RAT__Options_Page {
 
 		wp_enqueue_style(
 			'mtrat-style',
-			plugins_url( '/assets/css/mtrat-style.css', tribe()->getVar( 'mtrat.main-file' ) )
+			plugins_url( '/assets/css/mtrat-style.css', mtrat()->getVar( 'mtrat.main-file' ) )
 		);
 
 		wp_register_script(
 			'renderjson',
-			plugins_url( '/node_modules/renderjson/renderjson.js', tribe()->getVar( 'mtrat.main-file' ) )
+			plugins_url( '/node_modules/renderjson/renderjson.js', mtrat()->getVar( 'mtrat.main-file' ) )
 		);
 
 		wp_enqueue_script(
 			'mtrat-js',
-			plugins_url( '/assets/js/mtrat-script.js', tribe()->getVar( 'mtrat.main-file' ) ),
+			plugins_url( '/assets/js/mtrat-script.js', mtrat()->getVar( 'mtrat.main-file' ) ),
 			array( 'jquery', 'renderjson' )
 		);
 
@@ -92,6 +92,6 @@ class Tribe__RAT__Options_Page {
 		);
 
 		/** @noinspection PhpIncludeInspection */
-		include tribe()->getVar( 'mtrat.templates' ) . '/options-page.php';
+		include mtrat()->getVar( 'mtrat.templates' ) . '/options-page.php';
 	}
 }
