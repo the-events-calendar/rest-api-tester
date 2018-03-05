@@ -41,7 +41,7 @@ class Tribe__RAT__Scripts {
 			'react-redux',
 			'jquery',
 			'renderjson',
-		), mtrat()->getVar('version'), true );
+		), mtrat()->getVar( 'version' ), true );
 	}
 
 	public function localize_data() {
@@ -55,9 +55,16 @@ class Tribe__RAT__Scripts {
 		// -- -- available users
 		// -- -- nonce
 		wp_localize_script( 'mtrat-js', 'mtrat', array(
-			'l10n' => array(
+			'l10n'  => array(
 				'request_button_text'          => 'Request',
 				'button_loading_response_text' => 'Making the request...',
+			),
+			'state' => array(
+				'apis' => array(
+					[ 'slug' => 'foo', 'name' => 'Foo' ],
+					[ 'slug' => 'baz', 'name' => 'Baz' ],
+					[ 'slug' => 'bar', 'name' => 'Bar' ],
+				),
 			),
 		) );
 	}

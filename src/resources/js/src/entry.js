@@ -1,8 +1,33 @@
 const React = window.React || require( 'react' );
 const ReactDom = window.ReactDOM || require( 'react-dom' );
+const redux = window.redux || require( 'redux' );
+const Provider = require( 'react-redux' ).Provider;
+const APIsContainer = require( './components/APIs' ).APIsContainer;
+
+import reducers from './reducers';
+
+const storeInitialState = window.mtrat && window.mtrat.state ? window.mtrat.state : {
+	'apis': [],
+};
+
+const RestApiTester = function() {
+	return (
+		<div>
+			<APIsContainer/>
+		</div>
+	);
+};
+
+const store = redux.createStore( reducers, storeInitialState );
 
 const wrapperId = 'mtrat-wrapper';
 
-const helloWorldElement = <h1>Hello World</h1>;
-ReactDom.render( helloWorldElement, document.getElementById( wrapperId ) );
+ReactDom.render(
+	(
+		<Provider store={store}>
+			<RestApiTester/>
+		</Provider>
+	),
+	document.getElementById( wrapperId )
+);
 
