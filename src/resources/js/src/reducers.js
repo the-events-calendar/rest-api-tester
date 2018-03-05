@@ -12,25 +12,27 @@ import {
 } from './actions'
 
 function apis( apis = [], action ) {
-	if(apis.length === 0){
+	if ( apis.length === 0 ) {
 		return [];
 	}
 
 	// select none
 	apis = apis.map( function( api ) {
-		api.selected = false;
+		api.checked = false;
 		return api;
 	} );
 
 	switch ( action.type ) {
 		case API_CHANGE:
 			apis = apis.map( function( api ) {
-				api.selected = api.slug === action.selected;
+				api.checked = api.slug === action.checked;
 
 				return api;
 			} );
+			break;
 		default:
-			apis[0].selected = true;
+			apis[0].checked = true;
+			break;
 	}
 
 	return apis;

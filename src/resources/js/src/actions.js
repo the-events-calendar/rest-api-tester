@@ -1,4 +1,4 @@
-const actions = {
+module.exports = {
 	API_CHANGE: 'API_CHANGE',
 	ENDPOINT_CHANGE: 'ENDPOINT_CHANGE',
 	RESPONSE_CHANGE: 'RESPONSE_CHANGE',
@@ -7,5 +7,3 @@ const actions = {
 	SAFE_REQUEST_CHANGE: 'SAFE_REQUEST_CHANGE',
 	SUBMIT_REQUES: 'SUBMIT_REQUEST',
 };
-
-export default actions;

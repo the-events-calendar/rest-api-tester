@@ -18,7 +18,11 @@ const RestApiTester = function() {
 	);
 };
 
-const store = redux.createStore( reducers, storeInitialState );
+const store = redux.createStore(
+	reducers,
+	storeInitialState,
+	window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__() // Redux Dev Tools
+);
 
 const wrapperId = 'mtrat-wrapper';
 

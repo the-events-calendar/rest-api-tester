@@ -1,14 +1,17 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
 
-import {API_CHANGE,} from './../actions'
+const actions = require( './../actions' );
 
 const APIs = function( {apis, onApiSelect} ) {
 	const lis = apis.map( function( api ) {
 		return (
-			<li key={api.slug} onClick={function() {
-				onApiSelect( api.slug );
-			}}>{api.name}</li>
+			<li>
+				<input type="radio" key={api.slug} name={api.slug} onClick={function() {
+					onApiSelect( api.slug )
+				}} checked={api.checked}/>
+				<label htmlFor={api.slug}>{api.name}</label>
+			</li>
 		)
 	} );
 	return (
@@ -23,7 +26,7 @@ const mapStateToProps = function( state ) {
 };
 
 const changeApi = function( slug ) {
-	return {type: API_CHANGE, selected: slug};
+	return {type: actions.API_CHANGE, checked: slug};
 };
 
 const mapDispatchToProps = function( dispatch ) {
