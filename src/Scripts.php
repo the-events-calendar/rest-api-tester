@@ -41,7 +41,7 @@ class Tribe__RAT__Scripts {
 			'react-redux',
 			'jquery',
 			'renderjson',
-		) );
+		), mtrat()->getVar('version'), true );
 	}
 
 	public function localize_data() {

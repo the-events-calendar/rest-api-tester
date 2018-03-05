@@ -14,6 +14,7 @@ include 'vendor/autoload_52.php';
 add_action( 'plugins_loaded', 'mtrat_init', 99 );
 
 function mtrat( $classOrInterface = null ) {
+	/** @var tad_DI52_Container $container */
 	static $container;
 
 	if ( null == $classOrInterface ) {
@@ -30,6 +31,7 @@ function mtrat( $classOrInterface = null ) {
 function mtrat_init() {
 	$container= mtrat();
 
+	$container->setVar( 'version', '0.1.0' );
 	$container->setVar( 'main-file', __FILE__ );
 	$container->setVar( 'main-dir', dirname( __FILE__ ) );
 	$container->setVar( 'templates', dirname( __FILE__ ) . '/src/templates' );
