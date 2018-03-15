@@ -3,12 +3,14 @@ const ReactDom = window.ReactDOM || require( 'react-dom' );
 const redux = window.redux || require( 'redux' );
 const Provider = require( 'react-redux' ).Provider;
 const APIsContainer = require( './components/APIs' ).APIsContainer;
-const RoutesContainer = require('./components/Routes').RoutesContainer;
+const RoutesContainer = require( './components/Routes' ).RoutesContainer;
+const ArgsContainer = require( './components/Args' ).ArgsContainer;
 
 import reducers from './reducers';
 
 const storeInitialState = window.mtrat && window.mtrat.state ? window.mtrat.state : {
 	'apis': [],
+	'routes': [],
 };
 
 const RestApiTester = function() {
@@ -16,6 +18,7 @@ const RestApiTester = function() {
 		<div>
 			<APIsContainer/>
 			<RoutesContainer/>
+			<ArgsContainer/>
 		</div>
 	);
 };
@@ -34,6 +37,6 @@ ReactDom.render(
 			<RestApiTester/>
 		</Provider>
 	),
-	document.getElementById( wrapperId )
+	document.getElementById( wrapperId ),
 );
 

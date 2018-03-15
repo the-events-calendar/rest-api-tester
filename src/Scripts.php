@@ -5,6 +5,10 @@ class Tribe__RAT__Scripts {
 	 * @var Tribe__RAT__APIs__List
 	 */
 	protected $apis;
+	/**
+	 * @var string
+	 */
+	protected $client = 'default';
 
 	/**
 	 * Tribe__RAT__Scripts constructor.
@@ -14,11 +18,6 @@ class Tribe__RAT__Scripts {
 	public function __construct( Tribe__RAT__APIs__List $apis ) {
 		$this->apis = $apis;
 	}
-
-	/**
-	 * @var string
-	 */
-	protected $client = 'default';
 
 	public function set_client( $client ) {
 		$this->client = $client;
@@ -71,8 +70,9 @@ class Tribe__RAT__Scripts {
 		// -- -- nonce
 		$data = array(
 			'l10n'  => array(
-				'request_button_text'          => 'Request',
-				'button_loading_response_text' => 'Making the request...',
+				'request_button_text'          => __( 'Request', 'mtrat' ),
+				'button_loading_response_text' => __( 'Making the request...', 'mtrat' ),
+				'route-no-args'                => __( 'This route has no arguments.', 'mtrat' ),
 			),
 			'state' => array(
 				'apis' => $this->get_apis(),

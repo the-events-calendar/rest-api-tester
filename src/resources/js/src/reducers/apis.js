@@ -1,29 +1,19 @@
-import {API_CHANGE} from './actions';
+import {API_CHANGE, ROUTE_CHANGE} from './actions';
+import {setCurrentApi, setCurrentRoute} from './../functions/state';
 
 module.exports = function( apis = [], action ) {
 	if ( apis.length === 0 ) {
 		return [];
 	}
 
-
 	switch ( action.type ) {
 		case API_CHANGE:
-			apis = apis.map( function( api ) {
-				api.current = api.slug === action.current;
-
-				return api;
-			} );
+			apis = setCurrentApi( apis, action.current );
 			break;
 		default:
-			apis = apis.map( function( api, i ) {
-				if ( 0 === i ) {
-					api.current = true;
-				} else {
-					api.current = false;
-				}
-
-				return api;
-			} );
+		case ROUTE_CHANGE:
+			apis = setCurrentApi( apis );
+			apis = setCurrentRoute( apis, action.namespace, action.route );
 			break;
 	}
 
