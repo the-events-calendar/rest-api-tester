@@ -21608,8 +21608,7 @@ var RoutesContainer = __webpack_require__(93).RoutesContainer;
 var ArgsContainer = __webpack_require__(92).ArgsContainer;
 
 var storeInitialState = window.mtrat && window.mtrat.state ? window.mtrat.state : {
-	'apis': [],
-	'routes': []
+	'apis': []
 };
 
 var RestApiTester = function RestApiTester() {

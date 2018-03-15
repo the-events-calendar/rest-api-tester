@@ -10,7 +10,6 @@ import reducers from './reducers';
 
 const storeInitialState = window.mtrat && window.mtrat.state ? window.mtrat.state : {
 	'apis': [],
-	'routes': [],
 };
 
 const RestApiTester = function() {
