@@ -10,13 +10,13 @@ Components
 -- APIs Container -- apis
 -- -- APIs -> lists the available and testable REST APIs
 -- -- -- dispatches API_CHANGE
--- -- -- dispatches ENDPOINT_CHANGE
+-- -- -- dispatches ROUTE_CHANGE
 -- Response Container -- response
 -- -- Response-> shows the last request response
 -- -- -- changes on RESPONSE_CHANGE
 -- Endpoints Container -- endpoints
 -- -- Endpoints -> a list of endpoints that can be tested depending on the selected REST API
--- -- -- dispatches ENDPOINT_CHANGE
+-- -- -- dispatches ROUTE_CHANGE
 -- -- -- changes on API_CHANGE
 -- Request Parameters Container -- requestParameters
 -- -- User selection -> a list of users that can be spoofed in the request
@@ -28,10 +28,10 @@ Components
 -- Endpoint Container -- endpoint
 -- -- Fields -> a list of fields available for the request
 -- -- -- changes on SAFE_REQUEST_CHANGE (s2)
--- -- -- changes on ENDPOINT_CHANGE
+-- -- -- changes on ROUTE_CHANGE
 -- -- Custom Fields -> allows creating custom fields to send with the request (s2)
 -- -- Endpoint Documentation -> the endpoint documentation
--- -- -- changes on ENDPOINT_CHANGE
+-- -- -- changes on ROUTE_CHANGE
 -- Send Request Container
 -- -- Send Request -> the button to actually send the request
 -- -- -- dispatches SUBMIT_REQUEST

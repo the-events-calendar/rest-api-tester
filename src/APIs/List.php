@@ -33,7 +33,11 @@ class Tribe__RAT__APIs__List {
 
 		foreach ( $namespaces as $namespace => $namespace_routes ) {
 			foreach ( $namespace_routes as $namespace_route => $route_data ) {
-				$this->apis[ $namespace ]['routes'][ $namespace_route ] = $routes[ $namespace_route ];
+				$this_route_data = $routes[ $namespace_route ];
+				foreach ( $this_route_data as &$route_data_entry ) {
+					$route_data_entry['route'] = $namespace_route;
+				}
+				$this->apis[ $namespace ]['routes'][] = call_user_func_array( 'array_merge', $this_route_data );
 			}
 		}
 	}

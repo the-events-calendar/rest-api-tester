@@ -1,7 +1,6 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
-
-const actions = require( './../actions' );
+const actions = require( './../reducers/actions' );
 
 const APIs = function( {apis, onApiSelect} ) {
 	const lis = apis.map( function( api ) {
@@ -9,7 +8,7 @@ const APIs = function( {apis, onApiSelect} ) {
 			<li>
 				<input type="radio" key={api.slug} name={api.slug} onClick={function() {
 					onApiSelect( api.slug )
-				}} checked={api.checked}/>
+				}} checked={api.current}/>
 				<label htmlFor={api.slug}>{api.name}</label>
 			</li>
 		)
@@ -26,7 +25,7 @@ const mapStateToProps = function( state ) {
 };
 
 const changeApi = function( slug ) {
-	return {type: actions.API_CHANGE, checked: slug};
+	return {type: actions.API_CHANGE, current: slug};
 };
 
 const mapDispatchToProps = function( dispatch ) {
@@ -42,5 +41,5 @@ const APIsContainer = connect(
 	mapDispatchToProps,
 )( APIs );
 
-module.exports = {APIsContainer};
+module.exports = {APIs, APIsContainer};
 
