@@ -1,6 +1,19 @@
 <?php
 
 class Tribe__RAT__Scripts {
+	/**
+	 * @var Tribe__RAT__APIs__List
+	 */
+	protected $apis;
+
+	/**
+	 * Tribe__RAT__Scripts constructor.
+	 *
+	 * @param Tribe__RAT__APIs__List $apis
+	 */
+	public function __construct( Tribe__RAT__APIs__List $apis ) {
+		$this->apis = $apis;
+	}
 
 	/**
 	 * @var string
@@ -32,9 +45,11 @@ class Tribe__RAT__Scripts {
 	}
 
 	public function enqueue_own_scripts() {
+		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
+
 		wp_enqueue_style( 'mtrat-style', plugins_url( '/src/resources/css/mtrat-style.css', mtrat()->getVar( 'main-file' ) ) );
 
-		wp_enqueue_script( 'mtrat-js', plugins_url( '/src/resources/js/dist/mtrat-script.js', mtrat()->getVar( 'main-file' ) ), array(
+		wp_enqueue_script( 'mtrat-js', plugins_url( "/src/resources/js/dist/mtrat-script{$min}.js", mtrat()->getVar( 'main-file' ) ), array(
 			'react',
 			'react-dom',
 			'redux',
@@ -54,18 +69,26 @@ class Tribe__RAT__Scripts {
 		// -- -- -- -- arguments and methods
 		// -- -- available users
 		// -- -- nonce
-		wp_localize_script( 'mtrat-js', 'mtrat', array(
+		$data = array(
 			'l10n'  => array(
 				'request_button_text'          => 'Request',
 				'button_loading_response_text' => 'Making the request...',
 			),
 			'state' => array(
-				'apis' => array(
-					[ 'slug' => 'foo', 'name' => 'Foo' ],
-					[ 'slug' => 'baz', 'name' => 'Baz' ],
-					[ 'slug' => 'bar', 'name' => 'Bar' ],
-				),
+				'apis' => $this->get_apis(),
 			),
-		) );
+		);
+		wp_localize_script( 'mtrat-js', 'mtrat', $data );
+	}
+
+	/**
+	 * @return array
+	 */
+	protected function get_apis() {
+		if ( ! did_action( 'rest_api_init' ) ) {
+			do_action( 'rest_api_init', rest_get_server() );
+		}
+
+		return $this->apis->get_list();
 	}
 }

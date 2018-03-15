@@ -37,8 +37,11 @@ function mtrat_init() {
 	$container->setVar( 'templates', dirname( __FILE__ ) . '/src/templates' );
 
 	$container->singleton( 'Tribe__RAT__Options_Page', 'Tribe__RAT__Options_Page' );
+	$container->singleton( 'Tribe__RAT__APIs__List', 'Tribe__RAT__APIs__List' );
 
 	add_action( 'admin_menu', $container->callback( 'Tribe__RAT__Options_Page', 'register_menu' ) );
 	add_action( 'admin_enqueue_scripts', $container->callback( 'Tribe__RAT__Options_Page', 'enqueue_scripts' ) );
 	add_action( 'rest_api_init', $container->callback( 'Tribe__RAT__Nonce', 'maybe_spoof_user' ) );
+	add_action( 'rest_api_init', $container->callback( 'Tribe__RAT__APIs__List', 'compile' ), PHP_INT_MAX );
+	add_filter( 'wp_rest_server_class', $container->callback( 'Tribe__RAT__APIs__List', 'filter_wp_rest_server_class' ) );
 }

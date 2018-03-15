@@ -1,21 +1,30 @@
 const path = require( 'path' );
+const UnminifiedWebpackPlugin = require( 'unminified-webpack-plugin' );
 
 const DIST_DIR = path.resolve( __dirname, 'src/resources/js/dist' );
 const SRC_DIR = path.resolve( __dirname, 'src/resources/js/src' );
 
 module.exports = {
+	target: 'web',
+	mode: 'development',
 	module: {
 		rules: [
 			{
 				test: /\.js$/,
 				include: SRC_DIR,
-				use: "babel-loader"
+				use: 'babel-loader',
 			},
-		]
+		],
 	},
-	entry: SRC_DIR + '/entry.js',
+	entry: {
+		'mtrat-script': SRC_DIR + '/entry.js',
+	},
+	devtool: 'source-map',
 	output: {
 		path: DIST_DIR,
-		filename: 'mtrat-script.js',
-	}
+		filename: 'mtrat-script.min.js',
+	},
+	plugins: [
+		new UnminifiedWebpackPlugin(),
+	],
 };
