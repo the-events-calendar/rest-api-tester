@@ -10,7 +10,6 @@ module.exports = function( apis = [], action ) {
 		case API_CHANGE:
 			apis = setCurrentApi( apis, action.current );
 			break;
-		default:
 		case ROUTE_CHANGE:
 			apis = setCurrentApi( apis );
 			apis = setCurrentRoute( apis, action.namespace, action.route );

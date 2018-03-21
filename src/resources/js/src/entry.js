@@ -3,21 +3,28 @@ const ReactDom = window.ReactDOM || require( 'react-dom' );
 const redux = window.redux || require( 'redux' );
 const Provider = require( 'react-redux' ).Provider;
 const APIsContainer = require( './components/APIs' ).APIsContainer;
+const ResponseContainer = require( './components/Response' ).ResponseContainer;
 const RoutesContainer = require( './components/Routes' ).RoutesContainer;
 const ArgsContainer = require( './components/Args' ).ArgsContainer;
+const UsersContainer = require( './components/Users' ).UsersContainer;
 
 import reducers from './reducers';
 
 const storeInitialState = window.mtrat && window.mtrat.state ? window.mtrat.state : {
 	'apis': [],
+	'users': [],
+	'response': JSON.stringify( {} ),
 };
 
+// @todo method, user, submit, response
 const RestApiTester = function() {
 	return (
 		<div>
+			<ResponseContainer/>
 			<APIsContainer/>
 			<RoutesContainer/>
 			<ArgsContainer/>
+			<UsersContainer/>
 		</div>
 	);
 };

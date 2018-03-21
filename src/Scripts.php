@@ -75,7 +75,12 @@ class Tribe__RAT__Scripts {
 				'route-no-args'                => __( 'This route has no arguments.', 'mtrat' ),
 			),
 			'state' => array(
-				'apis' => $this->get_apis(),
+				'apis'     => $this->get_apis(),
+				'users'    => get_users(),
+				'response' => [
+					'data'   => json_encode( [ __( 'Make a request...', 'mtrat' ) => __( '...see the response here', 'mtrat' ) ] ),
+					'status' => '',
+				],
 			),
 		);
 		wp_localize_script( 'mtrat-js', 'mtrat', $data );
