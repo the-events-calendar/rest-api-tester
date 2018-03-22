@@ -59,20 +59,14 @@ class Tribe__RAT__Scripts {
 	}
 
 	public function localize_data() {
-		// -- l10n
-		// -- redux status initial hydration
-		// -- -- available REST APIs
-		// -- -- safe testing to show only available and supported methods for endpoints
-		// -- -- -- title, name, description, version
-		// -- -- -- endpoints
-		// -- -- -- -- arguments and methods
-		// -- -- available users
-		// -- -- nonce
 		$data = array(
 			'l10n'  => array(
 				'request_button_text'          => __( 'Request', 'mtrat' ),
 				'button_loading_response_text' => __( 'Making the request...', 'mtrat' ),
+				'no-apis'                      => __( 'There are no WP REST APIs on the site.', 'mtrat' ),
+				'api-no-routes'                => __( 'There are no routes for this API.', 'mtrat' ),
 				'route-no-args'                => __( 'This route has no arguments.', 'mtrat' ),
+				'route-no-methods'             => __( 'This route has no methods.', 'mtrat' ),
 			),
 			'state' => array(
 				'apis'     => $this->get_apis(),
@@ -94,6 +88,6 @@ class Tribe__RAT__Scripts {
 			do_action( 'rest_api_init', rest_get_server() );
 		}
 
-		return $this->apis->get_list();
+		return [ 'all' => $this->apis->get_list() ];
 	}
 }

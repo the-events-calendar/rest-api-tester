@@ -32,9 +32,9 @@ const mapDispatchToProps = function( dispatch ) {
 	};
 };
 
-const UsersContainer = connect(
+const Container = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 )( Users );
 
-module.exports = {Users, UsersContainer};
+module.exports = {Users, Container};

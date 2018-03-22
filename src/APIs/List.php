@@ -22,9 +22,7 @@ class Tribe__RAT__APIs__List {
 			$this->apis = array();
 		}
 
-		// add the root namespace
-		$namespaces = array_merge( array( '/' => array( '/' => array() ) ), $namespaces );
-		$routes     = $server->get_routes();
+		$routes = $server->get_routes();
 
 		$this->apis = array_combine(
 			array_keys( $namespaces ),
@@ -33,12 +31,25 @@ class Tribe__RAT__APIs__List {
 
 		foreach ( $namespaces as $namespace => $namespace_routes ) {
 			foreach ( $namespace_routes as $namespace_route => $route_data ) {
-				$this_route_data = $routes[ $namespace_route ];
-				foreach ( $this_route_data as &$route_data_entry ) {
-					$route_data_entry ['route']    = $namespace_route;
-					$route_data_entry['namespace'] = $namespace;
+				$this_route_data = array(
+					'route'     => $namespace_route,
+					'namespace' => $namespace,
+					'methods'   => array(),
+				);
+
+				$method_groups = $routes[ $namespace_route ];
+				foreach ( $method_groups as $method_group ) {
+					foreach ( array_keys($method_group['methods']) as $method ) {
+							$method_body = $method_group;
+							unset( $method_body['methods'] );
+							$this_route_data['methods'][] = array_merge( [
+								'slug' => strtolower( $method ),
+								'name' => strtoupper( $method ),
+							], $method_body );
+					}
 				}
-				$this->apis[ $namespace ]['routes'][] = call_user_func_array( 'array_merge', $this_route_data );
+
+				$this->apis[ $namespace ]['routes'][] = $this_route_data;
 			}
 		}
 	}
@@ -60,14 +71,21 @@ class Tribe__RAT__APIs__List {
 
 	protected function get_api_name( $namespace ) {
 		$map = array(
-			'/' => 'Root',
-			'oembed/1.0' => 'Oembed v1',
-			'wp/v2' => 'WordPress v2',
+			'/'               => 'Root',
+			'oembed/1.0'      => 'Oembed v1',
+			'wp/v2'           => 'WordPress v2',
 			'tribe/events/v1' => 'The Events Calendar v1',
 		);
 
 		$map = apply_filters( 'tribe_rest_api_tester_api_name_map', $map );
 
 		return isset( $map[ $namespace ] ) ? $map[ $namespace ] : $namespace;
+	}
+
+	protected function cast_method_to_object( $method ) {
+		return [
+			'slug' => strtolower( $method ),
+			'name' => strtoupper( $method ),
+		];
 	}
 }

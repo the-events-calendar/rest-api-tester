@@ -1,17 +1,26 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
 import {changeRoute} from './../functions/dispatchers';
-import {getApiRoutes} from './../functions/state';
+import {__} from './../functions/l10n';
 
-const Routes = function( {routes, onRouteSelect} ) {
+const Routes = function( {routes, current, onRouteSelect} ) {
+	if ( ! routes || 0 === routes.length ) {
+		return (
+			<p>{__( 'api-no-routes' )}</p>
+		);
+	}
+
 	const lis = routes.map( function( route ) {
 		return (
 			<li>
-				<a key={route.route} href="#" onClick={function( ev ) {
-					ev.stopPropagation();
-					ev.nativeEvent.stopImmediatePropagation();
-					onRouteSelect( route.namespace, route.route);
-				}}>{route.route}</a>
+				<a className={current === route.route ? 'current' : ''}
+				   key={route.route}
+				   href="#"
+				   onClick={function( ev ) {
+					   ev.stopPropagation();
+					   ev.nativeEvent.stopImmediatePropagation();
+					   onRouteSelect( route.route );
+				   }}>{route.route}</a>
 			</li>
 		);
 	} );
@@ -23,22 +32,23 @@ const Routes = function( {routes, onRouteSelect} ) {
 
 const mapStateToProps = function( state ) {
 	return {
-		routes: getApiRoutes( state.apis ),
+		routes: state.apis.routes,
+		current: state.apis.currentRoute.route,
 	};
 };
 
 const mapDispatchToProps = function( dispatch ) {
 	return {
-		onRouteSelect: function( namespace, route ) {
-			dispatch( changeRoute( namespace, route ) );
+		onRouteSelect: function( route ) {
+			dispatch( changeRoute( route ) );
 		},
 	};
 };
 
-const RoutesContainer = connect(
+const Container = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 )( Routes );
 
-module.exports = {Routes, RoutesContainer};
+module.exports = {Routes, Container};
 

@@ -2,10 +2,13 @@ const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
 import {changeApi} from './../functions/dispatchers';
 import {setCurrentApi} from './../functions/state';
+import {__} from './../functions/l10n';
 
-const APIs = function( {apis, onApiSelect} ) {
-	if ( 0 !== apis.length ) {
-		apis = setCurrentApi( apis );
+const APIs = function( {apis, current, onApiSelect} ) {
+	if ( ! apis || 0 === apis.length ) {
+		return (
+			<p>{__( 'no-apis' )}</p>
+		);
 	}
 
 	const lis = apis.map( function( api ) {
@@ -13,7 +16,7 @@ const APIs = function( {apis, onApiSelect} ) {
 			<li>
 				<input type="radio" key={api.slug} name={api.slug} onClick={function() {
 					onApiSelect( api.slug );
-				}} checked={api.current}/>
+				}} checked={current === api.slug}/>
 				<label htmlFor={api.slug}>{api.name}</label>
 			</li>
 		);
@@ -25,7 +28,8 @@ const APIs = function( {apis, onApiSelect} ) {
 
 const mapStateToProps = function( state ) {
 	return {
-		apis: state.apis,
+		apis: state.apis.all,
+		current: state.apis.current.slug,
 	};
 };
 
@@ -37,10 +41,10 @@ const mapDispatchToProps = function( dispatch ) {
 	};
 };
 
-const APIsContainer = connect(
+const Container = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 )( APIs );
 
-module.exports = {APIs, APIsContainer};
+module.exports = {APIs, Container};
 

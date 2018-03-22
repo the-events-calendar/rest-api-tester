@@ -1,11 +1,14 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
-import {getCurrentApiRoute} from './../functions/state';
 import {titleize} from './../functions/utils';
 import {__} from './../functions/l10n';
 
-const Args = function( {route} ) {
-	const args = route && route.args ? route.args : [];
+const Args = function( {args = []} ) {
+	if ( ! args || 0 === args.length ) {
+		return (
+			<p>{__( 'route-no-args' )}</p>
+		);
+	}
 
 	let lis = [];
 	let arg, input, value, title, description;
@@ -14,7 +17,6 @@ const Args = function( {route} ) {
 		if ( - 1 !== ['namespace', 'context'].indexOf( index ) ) {
 			continue;
 		}
-
 		arg = args[index];
 		value = arg.default ? arg.default : '';
 		title = titleize( index ) + ' ';
@@ -57,11 +59,6 @@ const Args = function( {route} ) {
 			</li>
 		) );
 	}
-	if ( 0 === lis.length ) {
-		return (
-			<p>{__( 'route-no-args' )}</p>
-		);
-	}
 	return (
 		<ul>{lis}</ul>
 	);
@@ -69,7 +66,7 @@ const Args = function( {route} ) {
 
 const mapStateToProps = function( state ) {
 	return {
-		route: getCurrentApiRoute( state.apis ),
+		args: state.apis.args,
 	};
 };
 
@@ -77,9 +74,9 @@ const mapDispatchToProps = function( dispatch ) {
 	return {};
 };
 
-const ArgsContainer = connect(
+const Container = connect(
 	mapStateToProps,
 	mapDispatchToProps,
 )( Args );
 
-module.exports = {Args, ArgsContainer};
+module.exports = {Args, Container};
