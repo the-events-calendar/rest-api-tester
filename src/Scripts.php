@@ -78,7 +78,7 @@ class Tribe__RAT__Scripts {
 				'apis'     => $this->get_apis(),
 				'users'    => get_users(),
 				'response' => [
-					'data'   => json_encode( [ __( 'Make a request...', 'mtrat' ) => __( '...see the response here', 'mtrat' ) ] ),
+					'data'   => json_encode( [ __( 'Make a request', 'mtrat' ) => __( 'and see the response here.', 'mtrat' ) ] ),
 					'status' => '',
 				],
 			),
