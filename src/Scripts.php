@@ -43,8 +43,6 @@ class Tribe__RAT__Scripts {
 		if ( ! wp_script_is( 'react-redux', 'registered' ) ) {
 			wp_register_script( 'react-redux', plugins_url( '/node_modules/react-redux/dist/react-redux.min.js', mtrat()->getVar( 'main-file' ) ) );
 		}
-
-		wp_register_script( 'renderjson', plugins_url( '/node_modules/renderjson/renderjson.js', mtrat()->getVar( 'main-file' ) ) );
 	}
 
 	/**
@@ -63,7 +61,6 @@ class Tribe__RAT__Scripts {
 			'redux',
 			'react-redux',
 			'jquery',
-			'renderjson',
 		), mtrat()->getVar( 'version' ), true );
 	}
 

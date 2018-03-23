@@ -41,57 +41,10 @@
     background-color: ivory;
 }
 
-/**
-Renderjson styles
-See: https://caldwell.github.io/renderjson/
- */
-
-#mtrat-wrapper .renderjson {
+#mtrat-wrapper .react-json-view {
     padding: 1em;
-    background-color: darkslategray;
     min-height: 10em;
     max-height: 50em;
     overflow: scroll;
     margin-top: 0;
-}
-
-#mtrat-wrapper .renderjson a {
-    text-decoration: none;
-}
-
-#mtrat-wrapper .renderjson .disclosure {
-    color: crimson;
-    font-size: 150%;
-}
-
-#mtrat-wrapper .renderjson .syntax {
-    color: grey;
-}
-
-#mtrat-wrapper .renderjson .string {
-    color: red;
-}
-
-#mtrat-wrapper .renderjson .number {
-    color: cyan;
-}
-
-#mtrat-wrapper .renderjson .boolean {
-    color: plum;
-}
-
-#mtrat-wrapper .renderjson .key {
-    color: lightblue;
-}
-
-#mtrat-wrapper .renderjson .keyword {
-    color: lightgoldenrodyellow;
-}
-
-#mtrat-wrapper .renderjson .object.syntax {
-    color: lightseagreen;
-}
-
-#mtrat-wrapper .renderjson .array.syntax {
-    color: lightsalmon;
 }
