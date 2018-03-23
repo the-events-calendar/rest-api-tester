@@ -8,6 +8,13 @@
 class Tribe__RAT__Nonce {
 
 	/**
+	 * Whether the user is currently spoofed.
+	 *
+	 * @var boolean
+	 */
+	protected static $spoofed = false;
+
+	/**
 	 * Stores the just generated logged in cookie for the user in the the COOKIE superglobal.
 	 *
 	 * @param string $logged_in_cookie
@@ -40,6 +47,8 @@ class Tribe__RAT__Nonce {
 		$user_id = (int) $_SERVER['HTTP_X_REST_API_USER'];
 		$this->change_user_to( $user_id );
 		$_SERVER['HTTP_X_WP_NONCE'] = wp_create_nonce( 'wp_rest' );
+
+		self::$spoofed = true;
 	}
 
 	/**
@@ -58,5 +67,12 @@ class Tribe__RAT__Nonce {
 		// log-in spoof
 		wp_set_auth_cookie( $user_id, false, is_ssl() );
 		wp_set_current_user( $user_id );
+	}
+
+	/**
+	 * Check whether the current user has been spoofed.
+	 */
+	public static function is_spoofed() {
+		return self::$spoofed;
 	}
 }
