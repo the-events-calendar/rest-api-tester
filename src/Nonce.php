@@ -52,6 +52,10 @@ class Tribe__RAT__Nonce {
 			return;
 		}
 
+		if ( ! check_admin_referer( 'mtrat', 'mtrat-nonce' ) ) {
+			return;
+		}
+
 		$user_id = (int) $_SERVER['HTTP_X_REST_API_USER'];
 		$this->change_user_to( $user_id );
 		$_SERVER['HTTP_X_WP_NONCE'] = wp_create_nonce( 'wp_rest' );
