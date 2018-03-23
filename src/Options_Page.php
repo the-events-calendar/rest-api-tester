@@ -1,5 +1,10 @@
 <?php
 
+/**
+ * Class Tribe__RAT__Options_Page
+ *
+ * @since TBD
+ */
 class Tribe__RAT__Options_Page {
 
 	/**
@@ -7,11 +12,22 @@ class Tribe__RAT__Options_Page {
 	 */
 	protected $scripts;
 
-	public function __construct(Tribe__RAT__Scripts $scripts  ) {
+	/**
+	 * Tribe__RAT__Options_Page constructor.
+	 *
+	 * @since TBD
+	 *
+	 * @param Tribe__RAT__Scripts $scripts
+	 */
+	public function __construct( Tribe__RAT__Scripts $scripts ) {
 		$this->scripts = $scripts;
-		$this->scripts->set_client('options-page');
 	}
 
+	/**
+	 * Registers the plugin option page.
+	 *
+	 * @since TBD
+	 */
 	public function register_menu() {
 		add_menu_page(
 			'REST API Tester',
@@ -22,6 +38,11 @@ class Tribe__RAT__Options_Page {
 		);
 	}
 
+	/**
+	 * Enqueues the scripts needed by the plugin.
+	 *
+	 * @since TBD
+	 */
 	public function enqueue_scripts() {
 		if ( empty( $_GET['page'] ) || 'mtrat-tester' !== $_GET['page'] ) {
 			return;
@@ -33,6 +54,11 @@ class Tribe__RAT__Options_Page {
 		$this->scripts->localize_data();
 	}
 
+	/**
+	 * Renders and prints the options page HTML.
+	 *
+	 * @since TBD
+	 */
 	public function render() {
 		/** @noinspection PhpIncludeInspection */
 		include mtrat()->getVar( 'templates' ) . '/options-page.php';

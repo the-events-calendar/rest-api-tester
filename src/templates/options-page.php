@@ -1,3 +1,11 @@
+<?php
+/**
+ * The plugin main options page.
+ *
+ * @since TBD
+ */
+?>
+
 <header>
 	<h1>
 		<?php esc_html_e('Modern Tribe REST API Tester', 'mtrat') ?>

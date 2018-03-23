@@ -1,4 +1,13 @@
 <?php
+/**
+ * Autoloads the plugin classes.
+ *
+ * @since TBD
+ *
+ * @param string $class
+ *
+ * @return bool
+ */
 function mtrat_autoload( $class ) {
 	$prefix = 'Tribe__RAT__';
 	if ( 0 === strpos( $class, $prefix ) ) {

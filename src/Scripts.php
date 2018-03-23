@@ -1,17 +1,20 @@
 <?php
 
+/**
+ * Class Tribe__RAT__Scripts
+ *
+ * @since TBD
+ */
 class Tribe__RAT__Scripts {
 	/**
 	 * @var Tribe__RAT__APIs__List
 	 */
 	protected $apis;
-	/**
-	 * @var string
-	 */
-	protected $client = 'default';
 
 	/**
 	 * Tribe__RAT__Scripts constructor.
+	 *
+	 * @since TBD
 	 *
 	 * @param Tribe__RAT__APIs__List $apis
 	 */
@@ -19,10 +22,11 @@ class Tribe__RAT__Scripts {
 		$this->apis = $apis;
 	}
 
-	public function set_client( $client ) {
-		$this->client = $client;
-	}
-
+	/**
+	 * Enqueues the plugin vendor scripts.
+	 *
+	 * @since TBD
+	 */
 	public function enqueue_vendor_scripts() {
 		if ( ! wp_script_is( 'react', 'registered' ) ) {
 			wp_register_script( 'react', plugins_url( '/node_modules/react/dist/react.min.js', mtrat()->getVar( 'main-file' ) ) );
@@ -43,6 +47,11 @@ class Tribe__RAT__Scripts {
 		wp_register_script( 'renderjson', plugins_url( '/node_modules/renderjson/renderjson.js', mtrat()->getVar( 'main-file' ) ) );
 	}
 
+	/**
+	 * Enqueues the plugin own scripts.
+	 *
+	 * @since TBD
+	 */
 	public function enqueue_own_scripts() {
 		$min = defined( 'SCRIPT_DEBUG' ) && SCRIPT_DEBUG ? '' : '.min';
 
@@ -58,6 +67,11 @@ class Tribe__RAT__Scripts {
 		), mtrat()->getVar( 'version' ), true );
 	}
 
+	/**
+	 * Localizes the plugin data on the page.
+	 *
+	 * @since TBD
+	 */
 	public function localize_data() {
 		$data = array(
 			'l10n'  => array(
@@ -86,6 +100,10 @@ class Tribe__RAT__Scripts {
 	}
 
 	/**
+	 * Returns the compiled list of available WordPress REST APIs
+	 *
+	 * @since TBD
+	 *
 	 * @return array
 	 */
 	protected function get_apis() {

@@ -3,6 +3,8 @@
 /**
  * Class Tribe__RAT__Nonce
  *
+ * @since TBD
+ *
  * Handles the spoofing (hacking) of the user for the purpose of passing the WP REST API nonce checks.
  */
 class Tribe__RAT__Nonce {
@@ -17,6 +19,8 @@ class Tribe__RAT__Nonce {
 	/**
 	 * Stores the just generated logged in cookie for the user in the the COOKIE superglobal.
 	 *
+	 * @since TBD
+	 *
 	 * @param string $logged_in_cookie
 	 */
 	public function grab_logged_in_cookie( $logged_in_cookie ) {
@@ -25,6 +29,8 @@ class Tribe__RAT__Nonce {
 
 	/**
 	 * Stores the just generated auth, or secure auth, cookie for the user in the the COOKIE superglobal.
+	 *
+	 * @since TBD
 	 *
 	 * @param string $auth_cookie
 	 */
@@ -35,6 +41,8 @@ class Tribe__RAT__Nonce {
 
 	/**
 	 * Logs in the user specified in the REST API testing plugin request and sets up the show to pass nonce checks.
+	 *
+	 * @since TBD
 	 */
 	public function maybe_spoof_user() {
 		if (
@@ -53,6 +61,8 @@ class Tribe__RAT__Nonce {
 
 	/**
 	 * Changes the current user into the one requested by the testing plugin.
+	 *
+	 * @since TBD
 	 *
 	 * @param \WP_REST_Request $request
 	 */
