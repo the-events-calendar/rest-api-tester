@@ -50,6 +50,8 @@ See: https://caldwell.github.io/renderjson/
     padding: 1em;
     background-color: darkslategray;
     min-height: 10em;
+    max-height: 50em;
+    overflow: scroll;
     margin-top: 0;
 }
 
