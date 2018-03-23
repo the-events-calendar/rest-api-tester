@@ -29,7 +29,8 @@ class Tribe__RAT__Options_Page {
 	 * @since TBD
 	 */
 	public function register_menu() {
-		add_menu_page(
+		add_submenu_page(
+			'tools.php',
 			'REST API Tester',
 			'REST API Tester',
 			'administrator',
@@ -47,7 +48,6 @@ class Tribe__RAT__Options_Page {
 		if ( empty( $_GET['page'] ) || 'mtrat-tester' !== $_GET['page'] ) {
 			return;
 		}
-
 
 		$this->scripts->enqueue_vendor_scripts();
 		$this->scripts->enqueue_own_scripts();

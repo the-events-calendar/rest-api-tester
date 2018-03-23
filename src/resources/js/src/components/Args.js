@@ -38,6 +38,11 @@ const Args = function( {args = []} ) {
 					</legend>
 				);
 				break;
+			case 'hidden':
+				input = (
+					<input type="hidden" key={index} name={index} value={value}/>
+				);
+				break;
 			default:
 			case 'string':
 				input = (
