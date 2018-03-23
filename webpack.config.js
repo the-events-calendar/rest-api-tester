@@ -6,7 +6,7 @@ const SRC_DIR = path.resolve( __dirname, 'src/resources/js/src' );
 
 module.exports = {
 	target: 'web',
-	mode: 'development',
+	mode: 'production',
 	module: {
 		rules: [
 			{

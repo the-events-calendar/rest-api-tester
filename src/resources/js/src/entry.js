@@ -8,6 +8,7 @@ const Routes = require( './components/Routes' ).Container;
 const Args = require( './components/Args' ).Container;
 const Users = require( './components/Users' ).Container;
 const Methods = require( './components/Methods' ).Container;
+const RequestForm = require('./components/RequestForm').Container;
 
 import reducers from './reducers';
 
@@ -23,9 +24,11 @@ const RestApiTester = function() {
 			<Response/>
 			<APIs/>
 			<Routes/>
-			<Methods/>
-			<Users/>
-			<Args/>
+			<RequestForm>
+				<Methods/>
+				<Users/>
+				<Args/>
+			</RequestForm>
 		</div>
 	);
 };

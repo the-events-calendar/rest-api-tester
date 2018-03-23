@@ -61,21 +61,23 @@ class Tribe__RAT__Scripts {
 	public function localize_data() {
 		$data = array(
 			'l10n'  => array(
-				'request_button_text'          => __( 'Request', 'mtrat' ),
-				'button_loading_response_text' => __( 'Making the request...', 'mtrat' ),
-				'no-apis'                      => __( 'There are no WP REST APIs on the site.', 'mtrat' ),
-				'api-no-routes'                => __( 'There are no routes for this API.', 'mtrat' ),
-				'route-no-args'                => __( 'This route has no arguments.', 'mtrat' ),
-				'route-no-methods'             => __( 'This route has no methods.', 'mtrat' ),
+				'request-button-text' => __( 'Request', 'mtrat' ),
+				'loading-text'        => __( 'Making the request...', 'mtrat' ),
+				'no-apis'             => __( 'There are no WP REST APIs on the site.', 'mtrat' ),
+				'api-no-routes'       => __( 'There are no routes for this API.', 'mtrat' ),
+				'route-no-args'       => __( 'This route has no arguments.', 'mtrat' ),
+				'route-no-methods'    => __( 'This route has no methods.', 'mtrat' ),
 			),
 			'state' => array(
 				'apis'     => $this->get_apis(),
 				'users'    => get_users(),
 				'response' => [
-					'data'   => json_encode( [ __( 'Make a request', 'mtrat' ) => __( 'and see the response here.', 'mtrat' ) ] ),
-					'status' => '',
+					'responseText' => json_encode( [ __( 'Make a request', 'mtrat' ) => __( 'and see the response here.', 'mtrat' ) ] ),
+					'status'       => '',
 				],
 			),
+			'nonce' => wp_create_nonce( 'wp_rest' ),
+			'url'   => untrailingslashit( rest_url() ),
 		);
 		wp_localize_script( 'mtrat-js', 'mtrat', $data );
 	}

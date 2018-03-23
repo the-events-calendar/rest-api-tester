@@ -17,8 +17,8 @@ const Routes = function( {routes, current, onRouteSelect} ) {
 				   key={route.route}
 				   href="#"
 				   onClick={function( ev ) {
+					   ev.preventDefault();
 					   ev.stopPropagation();
-					   ev.nativeEvent.stopImmediatePropagation();
 					   onRouteSelect( route.route );
 				   }}>{route.route}</a>
 			</li>

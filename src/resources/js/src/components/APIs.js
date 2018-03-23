@@ -1,7 +1,6 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
 import {changeApi} from './../functions/dispatchers';
-import {setCurrentApi} from './../functions/state';
 import {__} from './../functions/l10n';
 
 const APIs = function( {apis, current, onApiSelect} ) {

@@ -17,9 +17,11 @@ const Methods = function( {methods, current, onMethodChange} ) {
 		);
 	} );
 	return (
-		<select onChange={function( evt ) {
+		<legend>
+			Method: <select onChange={function( evt ) {
 			onMethodChange( evt.target.value );
 		}}>{options}</select>
+		</legend>
 	);
 };
 

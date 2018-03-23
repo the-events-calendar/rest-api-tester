@@ -24,7 +24,16 @@ const Args = function( {args = []} ) {
 				input = (
 					<legend>
 						{title}
-						<input type="number" key={index} value={value} required={arg.required}/>
+						<input type="number" key={index} name={index} defaultValue={value} required={arg.required}/>
+						{description}
+					</legend>
+				);
+				break;
+			case 'boolean':
+				input = (
+					<legend>
+						{title}
+						<input type="checkbox" key={index} name={index} value={value} required={arg.required}/>
 						{description}
 					</legend>
 				);
@@ -34,16 +43,7 @@ const Args = function( {args = []} ) {
 				input = (
 					<legend>
 						{title}
-						<input type="text" key={index} value={value} required={arg.required}/>
-						{description}
-					</legend>
-				);
-				break;
-			case 'boolean':
-				input = (
-					<legend>
-						{title}
-						<input type="checkbox" key={index} value={value} required={arg.required}/>
+						<input type="text" key={index} name={index} defaultValue={value} required={arg.required}/>
 						{description}
 					</legend>
 				);

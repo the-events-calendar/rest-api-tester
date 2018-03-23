@@ -9,11 +9,19 @@ const changeRoute = function( route ) {
 };
 
 const changeUser = function( ID ) {
-	return {type: actions.USER_CHANGE, ID: ID};
+	return {type: actions.USER_CHANGE, current: ID};
 };
 
 const changeMethod = function( method ) {
 	return {type: actions.METHOD_CHANGE, current: method};
+};
+
+const submitRequest = function() {
+	return {type: actions.LOADING};
+};
+
+const changeResponse = function( response ) {
+	return {type: actions.RESPONSE_CHANGE, status: response.status, responseText: response.responseText};
 };
 
 module.exports = {
@@ -21,4 +29,6 @@ module.exports = {
 	changeRoute,
 	changeUser,
 	changeMethod,
+	submitRequest,
+	changeResponse,
 };

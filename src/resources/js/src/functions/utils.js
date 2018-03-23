@@ -25,7 +25,6 @@ const statusToColor = function( status ) {
 	return color;
 };
 
-
 module.exports = {
 	titleize,
 	statusToColor,

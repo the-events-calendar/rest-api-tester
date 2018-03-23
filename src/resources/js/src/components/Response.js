@@ -4,21 +4,31 @@ const renderjson = require( 'renderjson' );
 import {statusToColor} from './../functions/utils';
 
 const Response = function( {response, status, color} ) {
-	renderjson.set_show_to_level( 5 );
+	if ( status === 'loading' ) {
+		return (
+			<div id="trap-response" class="full-width">
+				<h3 className='response-header'>
+					{response}
+				</h3>
+			</div>
+		);
+	}
+
+	renderjson.set_show_to_level( 3 );
 	const rendered = renderjson( JSON.parse( response ) );
 	const html = rendered instanceof HTMLElement ? rendered.outerHTML : '';
 
 	return (
-		<div id="trap-response" class="full-width medium-height">
-			<div class={'response-header ' + color}>{status}</div>
-			<div class='response' dangerouslySetInnerHTML={{__html: html}}></div>
+		<div id="trap-response" className="full-width medium-height">
+			<div className={'response-header ' + color}>{status}</div>
+			<div className='response' dangerouslySetInnerHTML={{__html: html}}></div>
 		</div>
 	);
 };
 
 const mapStateToProps = function( state ) {
 	return {
-		response: state.response.data,
+		response: state.response.responseText,
 		status: state.response.status,
 		color: statusToColor( state.response.status ),
 	};

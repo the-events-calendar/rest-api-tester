@@ -1,4 +1,4 @@
-import {API_CHANGE, METHOD_CHANGE, ROUTE_CHANGE} from './actions';
+import {API_CHANGE, LOADING, METHOD_CHANGE, RESPONSE_CHANGE, ROUTE_CHANGE} from './actions';
 
 const currentApi = function( apis = [], currentApi, action ) {
 	if ( apis.length === 0 ) {
@@ -17,6 +17,8 @@ const currentApi = function( apis = [], currentApi, action ) {
 			break;
 		case ROUTE_CHANGE:
 		case METHOD_CHANGE:
+		case LOADING:
+		case RESPONSE_CHANGE:
 			current = undefined !== currentApi ? currentApi : apis[0];
 			break;
 		default:
@@ -42,11 +44,11 @@ const currentRoute = function( routes = [], currentRoute, action ) {
 				return acc;
 			}, routes[0] );
 			break;
-		case METHOD_CHANGE:
-			break;
 		case API_CHANGE:
-		default:
 			current = routes[0];
+			break;
+		default:
+			current = undefined !== currentRoute ? currentRoute : routes[0];
 			break;
 	}
 

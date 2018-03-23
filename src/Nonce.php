@@ -31,13 +31,13 @@ class Tribe__RAT__Nonce {
 	 */
 	public function maybe_spoof_user() {
 		if (
-			! isset( $_SERVER['HTTP_X_TEC_REST_API_USER'] )
-			|| ! filter_var( $_SERVER['HTTP_X_TEC_REST_API_USER'], FILTER_VALIDATE_INT )
+			! isset( $_SERVER['HTTP_X_REST_API_USER'] )
+			|| ! filter_var( $_SERVER['HTTP_X_REST_API_USER'], FILTER_VALIDATE_INT )
 		) {
 			return;
 		}
 
-		$user_id = (int) $_SERVER['HTTP_X_TEC_REST_API_USER'];
+		$user_id = (int) $_SERVER['HTTP_X_REST_API_USER'];
 		$this->change_user_to( $user_id );
 		$_SERVER['HTTP_X_WP_NONCE'] = wp_create_nonce( 'wp_rest' );
 	}

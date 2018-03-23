@@ -1,19 +1,18 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
-import {changeUser} from './../functions/dispatchers';
 
-const Users = function( {users, onUserSelect} ) {
+const Users = function( {users} ) {
 	const options = users.map( function( user ) {
 		return (
-			<option key={user.ID} value={user.ID} onSelect={function() {
-				onUserSelect( users, user.ID );
-			}}>
+			<option key={user.ID} value={user.ID}>
 				{user.data.display_name} - ({user.roles.join( ', ' )})
 			</option>
 		);
 	} );
 	return (
-		<select>{options}</select>
+		<legend>
+			User: <select name='user'>{options}</select>
+		</legend>
 	);
 };
 
@@ -25,11 +24,7 @@ const mapStateToProps = function( state ) {
 };
 
 const mapDispatchToProps = function( dispatch ) {
-	return {
-		onUserSelect: function( ID ) {
-			dispatch( changeUser( ID ) );
-		},
-	};
+	return {};
 };
 
 const Container = connect(

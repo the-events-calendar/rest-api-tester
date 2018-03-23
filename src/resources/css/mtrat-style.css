@@ -1,28 +1,17 @@
-#trap-wrap {
+#mtrat-wrapper {
     margin-right: 20px;
 }
 
-#trap-wrap .full-width {
+#mtrat-wrapper .full-width {
     width: 100%;
 }
 
-#trap-wrap .medium-height {
-    height: 30em;
-}
-
-#trap-wrap .hidden {
+#mtrat-wrapper .hidden {
     display: none;
 }
 
-#trap-wrap .margin{
+#mtrat-wrapper .margin {
     margin-bottom: 1em;
-}
-
-#trap-response, #trap-documentation {
-    background-color: #303030;
-    font-size: 120%;
-    overflow: scroll;
-    resize: both;
 }
 
 #trap-response .response-header {
@@ -57,47 +46,50 @@ Renderjson styles
 See: https://caldwell.github.io/renderjson/
  */
 
-#trap-wrap .renderjson {
+#mtrat-wrapper .renderjson {
     padding: 1em;
+    background-color: darkslategray;
+    min-height: 10em;
+    margin-top: 0;
 }
 
-#trap-wrap .renderjson a {
+#mtrat-wrapper .renderjson a {
     text-decoration: none;
 }
 
-#trap-wrap .renderjson .disclosure {
+#mtrat-wrapper .renderjson .disclosure {
     color: crimson;
     font-size: 150%;
 }
 
-#trap-wrap .renderjson .syntax {
+#mtrat-wrapper .renderjson .syntax {
     color: grey;
 }
 
-#trap-wrap .renderjson .string {
+#mtrat-wrapper .renderjson .string {
     color: red;
 }
 
-#trap-wrap .renderjson .number {
+#mtrat-wrapper .renderjson .number {
     color: cyan;
 }
 
-#trap-wrap .renderjson .boolean {
+#mtrat-wrapper .renderjson .boolean {
     color: plum;
 }
 
-#trap-wrap .renderjson .key {
+#mtrat-wrapper .renderjson .key {
     color: lightblue;
 }
 
-#trap-wrap .renderjson .keyword {
+#mtrat-wrapper .renderjson .keyword {
     color: lightgoldenrodyellow;
 }
 
-#trap-wrap .renderjson .object.syntax {
+#mtrat-wrapper .renderjson .object.syntax {
     color: lightseagreen;
 }
 
-#trap-wrap .renderjson .array.syntax {
+#mtrat-wrapper .renderjson .array.syntax {
     color: lightsalmon;
 }
