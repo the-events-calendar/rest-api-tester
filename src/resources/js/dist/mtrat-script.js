@@ -10629,6 +10629,9 @@ var Args = function Args(_ref) {
 					description
 				);
 				break;
+			case 'hidden':
+				input = React.createElement('input', { type: 'hidden', key: index, name: index, value: value });
+				break;
 			default:
 			case 'string':
 				input = React.createElement(
