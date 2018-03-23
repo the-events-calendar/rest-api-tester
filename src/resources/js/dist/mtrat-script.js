@@ -10512,9 +10512,6 @@ var Args = function Args(_ref) {
 	    description = void 0;
 
 	for (var index in args) {
-		if (-1 !== ['namespace', 'context'].indexOf(index)) {
-			continue;
-		}
 		arg = args[index];
 		value = arg.default ? arg.default : '';
 		title = (0, _utils.titleize)(index) + ' ';
@@ -21990,10 +21987,9 @@ var currentRoute = function currentRoute() {
 				return acc;
 			}, routes[0]);
 			break;
-		case _actions.API_CHANGE:
 		case _actions.METHOD_CHANGE:
-			current = undefined !== currentRoute ? currentRoute : routes[0];
 			break;
+		case _actions.API_CHANGE:
 		default:
 			current = routes[0];
 			break;
@@ -22052,7 +22048,6 @@ module.exports = function () {
 	apis.methods = apis.currentRoute.methods;
 	apis.currentMethod = currentMethod(apis.methods, apis.currentMethod, action);
 	apis.args = apis.currentMethod.args;
-	apis.all;
 
 	return apis;
 };

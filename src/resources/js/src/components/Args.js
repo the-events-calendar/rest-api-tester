@@ -14,9 +14,6 @@ const Args = function( {args = []} ) {
 	let arg, input, value, title, description;
 
 	for ( let index in args ) {
-		if ( - 1 !== ['namespace', 'context'].indexOf( index ) ) {
-			continue;
-		}
 		arg = args[index];
 		value = arg.default ? arg.default : '';
 		title = titleize( index ) + ' ';

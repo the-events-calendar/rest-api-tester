@@ -42,10 +42,9 @@ const currentRoute = function( routes = [], currentRoute, action ) {
 				return acc;
 			}, routes[0] );
 			break;
-		case API_CHANGE:
 		case METHOD_CHANGE:
-			current = undefined !== currentRoute ? currentRoute : routes[0];
 			break;
+		case API_CHANGE:
 		default:
 			current = routes[0];
 			break;
@@ -97,7 +96,6 @@ module.exports = function( oldApis = {}, action ) {
 	apis.methods = apis.currentRoute.methods;
 	apis.currentMethod = currentMethod( apis.methods, apis.currentMethod, action );
 	apis.args = apis.currentMethod.args;
-	apis.all;
 
 	return apis;
 };
