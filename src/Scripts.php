@@ -63,10 +63,13 @@ class Tribe__RAT__Scripts {
 			'l10n'  => array(
 				'request-button-text' => __( 'Request', 'mtrat' ),
 				'loading-text'        => __( 'Making the request...', 'mtrat' ),
+				'apis-title'          => __( 'Available APIs', 'mtrat' ),
 				'no-apis'             => __( 'There are no WP REST APIs on the site.', 'mtrat' ),
+				'routes-title'        => __( 'Available Routes for the current API', 'mtrat' ),
 				'api-no-routes'       => __( 'There are no routes for this API.', 'mtrat' ),
 				'route-no-args'       => __( 'This route has no arguments.', 'mtrat' ),
 				'route-no-methods'    => __( 'This route has no methods.', 'mtrat' ),
+				'request-title'       => __( 'Available arguments for the current route', 'mtrat' ),
 			),
 			'state' => array(
 				'apis'     => $this->get_apis(),

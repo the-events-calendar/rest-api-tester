@@ -6,7 +6,10 @@ import {__} from './../functions/l10n';
 const APIs = function( {apis, current, onApiSelect} ) {
 	if ( ! apis || 0 === apis.length ) {
 		return (
-			<p>{__( 'no-apis' )}</p>
+			<div>
+				<h2>{__( 'apis-title' )}</h2>
+				<p>{__( 'no-apis' )}</p>
+			</div>
 		);
 	}
 
@@ -21,7 +24,10 @@ const APIs = function( {apis, current, onApiSelect} ) {
 		);
 	} );
 	return (
-		<ul>{lis}</ul>
+		<div>
+			<h2>{__( 'apis-title' )}</h2>
+			<ul>{lis}</ul>
+		</div>
 	);
 };
 

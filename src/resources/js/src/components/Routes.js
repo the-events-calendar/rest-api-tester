@@ -6,7 +6,10 @@ import {__} from './../functions/l10n';
 const Routes = function( {routes, current, onRouteSelect} ) {
 	if ( ! routes || 0 === routes.length ) {
 		return (
-			<p>{__( 'api-no-routes' )}</p>
+			<div>
+				{__( 'routes-title' )}
+				<p>{__( 'api-no-routes' )}</p>
+			</div>
 		);
 	}
 
@@ -25,7 +28,10 @@ const Routes = function( {routes, current, onRouteSelect} ) {
 		);
 	} );
 	return (
-		<ul>{lis}</ul>
+		<div>
+			<h2>{__( 'routes-title' )}</h2>
+			<ul>{lis}</ul>
+		</div>
 	);
 };
 

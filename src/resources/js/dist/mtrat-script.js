@@ -10404,11 +10404,20 @@ var RequestForm = function RequestForm(_ref) {
 	};
 
 	return React.createElement(
-		'form',
-		{ id: 'mtrat-form' },
-		children,
-		React.createElement('input', { type: 'submit', className: 'button-primary', onSubmit: sendRequest, onClick: sendRequest,
-			value: (0, _l10n.__)('request-button-text') })
+		'div',
+		null,
+		React.createElement(
+			'h2',
+			null,
+			(0, _l10n.__)('request-title')
+		),
+		React.createElement(
+			'form',
+			{ id: 'mtrat-form' },
+			children,
+			React.createElement('input', { type: 'submit', className: 'button-primary', onSubmit: sendRequest, onClick: sendRequest,
+				value: (0, _l10n.__)('request-button-text') })
+		)
 	);
 };
 
@@ -10674,9 +10683,14 @@ var Routes = function Routes(_ref) {
 
 	if (!routes || 0 === routes.length) {
 		return React.createElement(
-			'p',
+			'div',
 			null,
-			(0, _l10n.__)('api-no-routes')
+			(0, _l10n.__)('routes-title'),
+			React.createElement(
+				'p',
+				null,
+				(0, _l10n.__)('api-no-routes')
+			)
 		);
 	}
 
@@ -10699,9 +10713,18 @@ var Routes = function Routes(_ref) {
 		);
 	});
 	return React.createElement(
-		'ul',
+		'div',
 		null,
-		lis
+		React.createElement(
+			'h2',
+			null,
+			(0, _l10n.__)('routes-title')
+		),
+		React.createElement(
+			'ul',
+			null,
+			lis
+		)
 	);
 };
 
@@ -11023,9 +11046,18 @@ var APIs = function APIs(_ref) {
 
 	if (!apis || 0 === apis.length) {
 		return React.createElement(
-			'p',
+			'div',
 			null,
-			(0, _l10n.__)('no-apis')
+			React.createElement(
+				'h2',
+				null,
+				(0, _l10n.__)('apis-title')
+			),
+			React.createElement(
+				'p',
+				null,
+				(0, _l10n.__)('no-apis')
+			)
 		);
 	}
 
@@ -11044,9 +11076,18 @@ var APIs = function APIs(_ref) {
 		);
 	});
 	return React.createElement(
-		'ul',
+		'div',
 		null,
-		lis
+		React.createElement(
+			'h2',
+			null,
+			(0, _l10n.__)('apis-title')
+		),
+		React.createElement(
+			'ul',
+			null,
+			lis
+		)
 	);
 };
 

@@ -41,11 +41,14 @@ const RequestForm = function( {children, nonce, restUrl, method, onRequestSubmit
 	};
 
 	return (
-		<form id='mtrat-form'>
-			{children}
-			<input type='submit' className='button-primary' onSubmit={sendRequest} onClick={sendRequest}
-			       value={__( 'request-button-text' )}/>
-		</form>
+		<div>
+			<h2>{__( 'request-title' )}</h2>
+			<form id='mtrat-form'>
+				{children}
+				<input type='submit' className='button-primary' onSubmit={sendRequest} onClick={sendRequest}
+				       value={__( 'request-button-text' )}/>
+			</form>
+		</div>
 	);
 };
 
