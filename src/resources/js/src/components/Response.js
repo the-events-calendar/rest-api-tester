@@ -1,7 +1,7 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
-const renderjson = require( 'renderjson' );
 import {statusToColor} from './../functions/utils';
+import ReactJson from 'react-json-view';
 
 const Response = function( {response, status, color} ) {
 	if ( status === 'loading' ) {
@@ -14,14 +14,10 @@ const Response = function( {response, status, color} ) {
 		);
 	}
 
-	renderjson.set_show_to_level( 3 );
-	const rendered = renderjson( JSON.parse( response ) );
-	const html = rendered instanceof HTMLElement ? rendered.outerHTML : '';
-
 	return (
 		<div id="trap-response" className="full-width medium-height">
 			<div className={'response-header ' + color}>{status}</div>
-			<div className='response' dangerouslySetInnerHTML={{__html: html}}></div>
+			<ReactJson src={JSON.parse( response )} theme='monokai'/>
 		</div>
 	);
 };
