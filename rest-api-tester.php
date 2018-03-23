@@ -29,7 +29,7 @@ function mtrat( $classOrInterface = null ) {
 }
 
 function mtrat_init() {
-	$container= mtrat();
+	$container = mtrat();
 
 	$container->setVar( 'version', '0.1.0' );
 	$container->setVar( 'main-file', __FILE__ );
