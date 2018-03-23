@@ -52,6 +52,14 @@ class Tribe__RAT__APIs__List {
 				$this->apis[ $namespace ]['routes'][] = $this_route_data;
 			}
 		}
+		
+		/**
+		 * Filter the API routes used by RAT.
+		 *
+		 * @param array                    $apis   Namespaced routes.
+		 * @param Tribe__RAT__APIs__Server $server REST Server instance.
+		 */
+		$this->apis = apply_filters( 'tribe_rat_apis', $this->apis, $server );
 	}
 
 	public function get_list() {
