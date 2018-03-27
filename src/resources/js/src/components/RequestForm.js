@@ -16,12 +16,19 @@ const RequestForm = function( {children, nonce, restUrl, method, onRequestSubmit
 
 		const emptyData = new RegExp( '^[^=]+=$' );
 		const userPattern = new RegExp( '^user=.*' );
+		const adminNonce = $('#mtrat-nonce').val();
+
+		if ( ! adminNonce ) {
+			return;
+		}
 
 		let $form = $( ev.target ).closest( 'form' );
 		let data = $form.serialize();
 		data = data.split( '&' ).filter( function( dataEntry ) {
 			return ! emptyData.test( dataEntry ) && ! userPattern.test( dataEntry );
 		} );
+		data.push( 'action=mtrat' );
+		data.push( `mtrat-nonce=${adminNonce}` );
 		data = data.join( '&' );
 		const user = $form.find( '[name="user"]' ).val();
 

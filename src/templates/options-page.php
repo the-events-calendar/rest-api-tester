@@ -6,6 +6,8 @@
  */
 ?>
 
+<?php wp_nonce_field( 'mtrat', 'mtrat-nonce' ); ?>
+
 <header>
 	<h1>
 		<?php esc_html_e('Modern Tribe REST API Tester', 'mtrat') ?>

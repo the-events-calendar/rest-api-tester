@@ -10379,12 +10379,19 @@ var RequestForm = function RequestForm(_ref) {
 
 		var emptyData = new RegExp('^[^=]+=$');
 		var userPattern = new RegExp('^user=.*');
+		var adminNonce = $('#mtrat-nonce').val();
+
+		if (!adminNonce) {
+			return;
+		}
 
 		var $form = $(ev.target).closest('form');
 		var data = $form.serialize();
 		data = data.split('&').filter(function (dataEntry) {
 			return !emptyData.test(dataEntry) && !userPattern.test(dataEntry);
 		});
+		data.push('action=mtrat');
+		data.push('mtrat-nonce=' + adminNonce);
 		data = data.join('&');
 		var user = $form.find('[name="user"]').val();
 
