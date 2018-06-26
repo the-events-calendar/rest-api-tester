@@ -5137,38 +5137,15 @@ var statusToColor = function statusToColor(status) {
 var parseQuery = function parseQuery(query) {
 	var emptyData = new RegExp('^[^=]+=$');
 	var userPattern = new RegExp('^user=.*');
-	var dataFrags = query.split('&').filter(function (dataEntry) {
+
+	return query.split('&').filter(function (dataEntry) {
 		return !emptyData.test(dataEntry) && !userPattern.test(dataEntry);
-	});
+	}).reduce(function (dataCouples, couple) {
+		var split = couple.split('=');
+		dataCouples[split[0]] = split[1];
 
-	var dataCouples = {};
-	var _iteratorNormalCompletion = true;
-	var _didIteratorError = false;
-	var _iteratorError = undefined;
-
-	try {
-		for (var _iterator = dataFrags[Symbol.iterator](), _step; !(_iteratorNormalCompletion = (_step = _iterator.next()).done); _iteratorNormalCompletion = true) {
-			var couple = _step.value;
-
-			var split = couple.split('=');
-			dataCouples[split[0]] = split[1];
-		}
-	} catch (err) {
-		_didIteratorError = true;
-		_iteratorError = err;
-	} finally {
-		try {
-			if (!_iteratorNormalCompletion && _iterator.return) {
-				_iterator.return();
-			}
-		} finally {
-			if (_didIteratorError) {
-				throw _iteratorError;
-			}
-		}
-	}
-
-	return dataCouples;
+		return dataCouples;
+	}, {});
 };
 
 var replaceDataInRegex = function replaceDataInRegex(regexString, data) {
