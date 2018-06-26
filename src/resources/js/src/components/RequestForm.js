@@ -2,6 +2,7 @@ const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
 import {changeResponse, submitRequest} from './../functions/dispatchers';
 import {__} from './../functions/l10n';
+import {parseQuery, replaceDataInRegex} from '../functions/utils';
 
 const $ = window.jQuery;
 const mtrat = window.mtrat || {
@@ -14,22 +15,22 @@ const RequestForm = function( {children, nonce, restUrl, method, onRequestSubmit
 		ev.preventDefault();
 		ev.stopPropagation();
 
-		const emptyData = new RegExp( '^[^=]+=$' );
-		const userPattern = new RegExp( '^user=.*' );
 		const adminNonce = $('#mtrat-nonce').val();
 
 		if ( ! adminNonce ) {
 			return;
 		}
 
-		let $form = $( ev.target ).closest( 'form' );
-		let data = $form.serialize();
-		data = data.split( '&' ).filter( function( dataEntry ) {
-			return ! emptyData.test( dataEntry ) && ! userPattern.test( dataEntry );
-		} );
-		data.push( 'action=mtrat' );
-		data.push( `mtrat-nonce=${adminNonce}` );
-		data = data.join( '&' );
+		const $form = $( ev.target ).closest( 'form' );
+		const formData = $form.serialize();
+
+		const data = parseQuery( formData );
+
+		restUrl = replaceDataInRegex( restUrl, data );
+
+		data['action'] = 'mtrat';
+		data['mtrat-nonce'] = adminNonce;
+
 		const user = $form.find( '[name="user"]' ).val();
 
 		onRequestSubmit();
