@@ -1,5 +1,5 @@
-import {LOADING, RESPONSE_CHANGE} from './../reducers/actions';
-import {__} from './../functions/l10n';
+import { LOADING, RESPONSE_CHANGE } from './../reducers/actions';
+import { __ } from './../functions/l10n';
 
 module.exports = function( response = {}, action ) {
 	switch ( action.type ) {
@@ -16,7 +16,7 @@ module.exports = function( response = {}, action ) {
 			};
 			break;
 		default:
-			response = {...response};
+			response = { ...response };
 			break;
 	}
 

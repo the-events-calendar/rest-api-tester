@@ -1,8 +1,8 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
-import {changeResponse, submitRequest} from './../functions/dispatchers';
-import {__} from './../functions/l10n';
-import {parseQuery, replaceDataInRegex} from '../functions/utils';
+import { changeResponse, submitRequest } from './../functions/dispatchers';
+import { __ } from './../functions/l10n';
+import { parseQuery, replaceDataInRegex } from '../functions/utils';
 
 const $ = window.jQuery;
 const mtrat = window.mtrat || {
@@ -10,12 +10,12 @@ const mtrat = window.mtrat || {
 	url: '',
 };
 
-const RequestForm = function( {children, nonce, restUrl, method, onRequestSubmit, onSuccess, onFailure} ) {
+const RequestForm = function( { children, nonce, restUrl, method, onRequestSubmit, onSuccess, onFailure } ) {
 	const sendRequest = function( ev ) {
 		ev.preventDefault();
 		ev.stopPropagation();
 
-		const adminNonce = $('#mtrat-nonce').val();
+		const adminNonce = $( '#mtrat-nonce' ).val();
 
 		if ( ! adminNonce ) {
 			return;
@@ -28,8 +28,8 @@ const RequestForm = function( {children, nonce, restUrl, method, onRequestSubmit
 
 		restUrl = replaceDataInRegex( restUrl, data );
 
-		data['action'] = 'mtrat';
-		data['mtrat-nonce'] = adminNonce;
+		data.action = 'mtrat';
+		data[ 'mtrat-nonce' ] = adminNonce;
 
 		const user = $form.find( '[name="user"]' ).val();
 
@@ -50,11 +50,16 @@ const RequestForm = function( {children, nonce, restUrl, method, onRequestSubmit
 
 	return (
 		<div>
-			<h2>{__( 'request-title' )}</h2>
-			<form id='mtrat-form'>
-				{children}
-				<input type='submit' className='button-primary' onSubmit={sendRequest} onClick={sendRequest}
-				       value={__( 'request-button-text' )}/>
+			<h2>{ __( 'request-title' ) }</h2>
+			<form id="mtrat-form">
+				{ children }
+				<input
+					type="submit"
+					className="button-primary"
+					onSubmit={ sendRequest }
+					onClick={ sendRequest }
+					value={ __( 'request-button-text' ) }
+				/>
 			</form>
 		</div>
 	);
@@ -63,7 +68,7 @@ const RequestForm = function( {children, nonce, restUrl, method, onRequestSubmit
 const mapStateToProps = function( state ) {
 	return {
 		nonce: mtrat.nonce,
-		restUrl: `${mtrat.url}${state.apis.currentRoute.route}`,
+		restUrl: `${ mtrat.url }${ state.apis.currentRoute.route }`,
 		method: state.apis.currentMethod.name,
 	};
 };
@@ -74,7 +79,7 @@ const mapDispatchToProps = function( dispatch ) {
 			dispatch( submitRequest() );
 		},
 		onSuccess: function( response ) {
-			dispatch( changeResponse( {status: 200, responseText: JSON.stringify( response )} ) );
+			dispatch( changeResponse( { status: 200, responseText: JSON.stringify( response ) } ) );
 		},
 		onFailure: function( response ) {
 			dispatch( changeResponse( response ) );
@@ -87,4 +92,4 @@ const Container = connect(
 	mapDispatchToProps,
 )( RequestForm );
 
-module.exports = {RequestForm, Container};
+module.exports = { RequestForm, Container };
