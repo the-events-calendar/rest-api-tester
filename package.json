@@ -4,7 +4,11 @@
   "version": "0.1.0",
   "author": "Modern Tribe, Inc.",
   "description": "Test WordPress REST APIs from within WordPress",
-  "license": "GPL-2.0-or-later",
+  "license": "GPL-2.0+",
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/moderntribe/rest-api-tester.git"
+  },
   "scripts": {
     "build": "babel assets/js/src -d assets/js/dist",
     "watch": "run-when-changed --watch 'src/*.js' --watch='src/**/*.js' --watch='tests/**/*.js' --exec 'npm run-script build'",
@@ -32,7 +36,7 @@
     "ajv": "^6.5.1"
   },
   "dependencies": {
-    "npm": "^5.7.1",
+    "npm": "^5.10.0",
     "react": "^15.6.2",
     "react-dom": "^15.6.2",
     "react-json-view": "^1.16.1",
