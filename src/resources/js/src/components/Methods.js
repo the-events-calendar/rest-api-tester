@@ -1,26 +1,27 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
-import {changeMethod} from './../functions/dispatchers';
-import {__} from './../functions/l10n';
+import { changeMethod } from './../functions/dispatchers';
+import { __ } from './../functions/l10n';
 
-const Methods = function( {methods, current, onMethodChange} ) {
+const Methods = function( { methods, current, onMethodChange } ) {
 	if ( ! methods || 0 === methods.length ) {
 		return (
-			<p>{__( 'route-no-methods' )}</p>
+			<p>{ __( 'route-no-methods' ) }</p>
 		);
 	}
 	const options = methods.map( function( method ) {
 		return (
-			<option key={method.slug} value={method.slug} selected={current === method.slug}>
-				{method.name}
+			<option key={ method.slug } value={ method.slug } selected={ current === method.slug }>
+				{ method.name }
 			</option>
 		);
 	} );
 	return (
 		<legend>
-			Method: <select onChange={function( evt ) {
-			onMethodChange( evt.target.value );
-		}}>{options}</select>
+			Method: <select onChange={ function( evt ) {
+				onMethodChange( evt.target.value );
+			} }
+			        >{ options }</select>
 		</legend>
 	);
 };
@@ -45,4 +46,4 @@ const Container = connect(
 	mapDispatchToProps,
 )( Methods );
 
-module.exports = {Methods, Container};
+module.exports = { Methods, Container };

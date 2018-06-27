@@ -1,20 +1,20 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
-import {titleize} from './../functions/utils';
-import {__} from './../functions/l10n';
+import { titleize } from './../functions/utils';
+import { __ } from './../functions/l10n';
 
-const Args = function( {args = []} ) {
+const Args = function( { args = [] } ) {
 	if ( ! args || 0 === args.length ) {
 		return (
-			<p>{__( 'route-no-args' )}</p>
+			<p>{ __( 'route-no-args' ) }</p>
 		);
 	}
 
-	let lis = [];
+	const lis = [];
 	let arg, input, value, title, description;
 
-	for ( let index in args ) {
-		arg = args[index];
+	for ( const index in args ) {
+		arg = args[ index ];
 		value = arg.default ? arg.default : '';
 		title = titleize( index ) + ' ';
 		description = arg.description ? arg.description : '';
@@ -23,33 +23,33 @@ const Args = function( {args = []} ) {
 			case 'integer':
 				input = (
 					<legend>
-						{title}
-						<input type="number" key={index} name={index} defaultValue={value} required={arg.required}/>
-						{description}
+						{ title }
+						<input type="number" key={ index } name={ index } defaultValue={ value } required={ arg.required } />
+						{ description }
 					</legend>
 				);
 				break;
 			case 'boolean':
 				input = (
 					<legend>
-						{title}
-						<input type="checkbox" key={index} name={index} value={value} required={arg.required}/>
-						{description}
+						{ title }
+						<input type="checkbox" key={ index } name={ index } value={ value } required={ arg.required } />
+						{ description }
 					</legend>
 				);
 				break;
 			case 'hidden':
 				input = (
-					<input type="hidden" key={index} name={index} value={value}/>
+					<input type="hidden" key={ index } name={ index } value={ value } />
 				);
 				break;
 			default:
 			case 'string':
 				input = (
 					<legend>
-						{title}
-						<input type="text" key={index} name={index} defaultValue={value} required={arg.required}/>
-						{description}
+						{ title }
+						<input type="text" key={ index } name={ index } defaultValue={ value } required={ arg.required } />
+						{ description }
 					</legend>
 				);
 				break;
@@ -57,12 +57,12 @@ const Args = function( {args = []} ) {
 
 		lis.push( (
 			<li>
-				{input}
+				{ input }
 			</li>
 		) );
 	}
 	return (
-		<ul>{lis}</ul>
+		<ul>{ lis }</ul>
 	);
 };
 
@@ -81,4 +81,4 @@ const Container = connect(
 	mapDispatchToProps,
 )( Args );
 
-module.exports = {Args, Container};
+module.exports = { Args, Container };
