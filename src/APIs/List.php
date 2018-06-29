@@ -28,9 +28,13 @@ class Tribe__RAT__APIs__List {
 	 *
 	 * @since TBD
 	 *
-	 * @param Tribe__RAT__APIs__Server $server
+	 * @param Tribe__RAT__APIs__Server|object $server
 	 */
-	public function compile( Tribe__RAT__APIs__Server $server ) {
+	public function compile( $server ) {
+		if ( ! $server instanceof Tribe__RAT__APIs__Server ) {
+			return;
+		}
+
 		if ( is_array( $this->apis ) ) {
 			return;
 		}
