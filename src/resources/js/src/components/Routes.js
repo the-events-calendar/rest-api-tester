@@ -1,14 +1,14 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
-import {changeRoute} from './../functions/dispatchers';
-import {__} from './../functions/l10n';
+import { changeRoute } from './../functions/dispatchers';
+import { __ } from './../functions/l10n';
 
-const Routes = function( {routes, current, onRouteSelect} ) {
+const Routes = function( { routes, current, onRouteSelect } ) {
 	if ( ! routes || 0 === routes.length ) {
 		return (
 			<div>
-				{__( 'routes-title' )}
-				<p>{__( 'api-no-routes' )}</p>
+				{ __( 'routes-title' ) }
+				<p>{ __( 'api-no-routes' ) }</p>
 			</div>
 		);
 	}
@@ -16,25 +16,26 @@ const Routes = function( {routes, current, onRouteSelect} ) {
 	const lis = routes.map( function( route ) {
 		return (
 			<li>
-				<a className={current === route.route ? 'current' : ''}
-				   key={route.route}
-				   href="#"
-				   onClick={function( ev ) {
+				<a
+					className={ current === route.route ? 'current' : '' }
+					key={ route.route }
+					href="#"
+					onClick={ function( ev ) {
 					   ev.preventDefault();
 					   ev.stopPropagation();
 					   onRouteSelect( route.route );
-				   }}>{route.route}</a>
+				   } }
+				>{ route.route }</a>
 			</li>
 		);
 	} );
 	return (
 		<div>
-			<h2>{__( 'routes-title' )}</h2>
-			<ul>{lis}</ul>
+			<h2>{ __( 'routes-title' ) }</h2>
+			<ul>{ lis }</ul>
 		</div>
 	);
 };
-
 
 const mapStateToProps = function( state ) {
 	return {
@@ -56,5 +57,5 @@ const Container = connect(
 	mapDispatchToProps,
 )( Routes );
 
-module.exports = {Routes, Container};
+module.exports = { Routes, Container };
 

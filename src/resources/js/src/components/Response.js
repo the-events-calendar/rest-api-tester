@@ -1,14 +1,14 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
-import {statusToColor} from './../functions/utils';
+import { statusToColor } from './../functions/utils';
 import ReactJson from 'react-json-view';
 
-const Response = function( {response, status, color} ) {
+const Response = function( { response, status, color } ) {
 	if ( status === 'loading' ) {
 		return (
 			<div id="trap-response" class="full-width">
-				<h3 className='response-header'>
-					{response}
+				<h3 className="response-header">
+					{ response }
 				</h3>
 			</div>
 		);
@@ -16,8 +16,8 @@ const Response = function( {response, status, color} ) {
 
 	return (
 		<div id="trap-response" className="full-width medium-height">
-			<div className={'response-header ' + color}>{status}</div>
-			<ReactJson src={JSON.parse( response )} theme='monokai'/>
+			<div className={ 'response-header ' + color }>{ status }</div>
+			<ReactJson src={ JSON.parse( response ) } theme="monokai" />
 		</div>
 	);
 };
@@ -39,4 +39,4 @@ const Container = connect(
 	mapDispatchToProps,
 )( Response );
 
-module.exports = {Response, Container};
+module.exports = { Response, Container };

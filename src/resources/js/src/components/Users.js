@@ -1,21 +1,20 @@
 const React = window.React || require( 'react' );
 const connect = require( 'react-redux' ).connect;
 
-const Users = function( {users} ) {
+const Users = function( { users } ) {
 	const options = users.map( function( user ) {
 		return (
-			<option key={user.ID} value={user.ID}>
-				{user.data.display_name} - ({user.roles.join( ', ' )})
+			<option key={ user.ID } value={ user.ID }>
+				{ user.data.display_name } - ({ user.roles.join( ', ' ) })
 			</option>
 		);
 	} );
 	return (
 		<legend>
-			User: <select name='user'>{options}</select>
+			User: <select name="user">{ options }</select>
 		</legend>
 	);
 };
-
 
 const mapStateToProps = function( state ) {
 	return {
@@ -32,4 +31,4 @@ const Container = connect(
 	mapDispatchToProps,
 )( Users );
 
-module.exports = {Users, Container};
+module.exports = { Users, Container };
