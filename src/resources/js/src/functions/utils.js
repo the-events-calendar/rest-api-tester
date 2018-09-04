@@ -1,4 +1,7 @@
+const he = require( 'he' );
+
 const titleize = ( slug ) => {
+
 	return slug.replace( /[-_]/g, ' ' ).replace( /\b[a-z]/g, function() {
 		return arguments[ 0 ].toUpperCase();
 	} );
@@ -23,17 +26,18 @@ const statusToColor = ( status ) => {
 	}
 
 	return color;
-};
+}
 
 const parseQuery = ( query ) => {
 	const emptyData = new RegExp( '^[^=]+=$' );
 	const userPattern = new RegExp( '^user=.*' );
+	const plusSign = /\+/g;
 
 	return query.split( '&' ).filter( ( dataEntry ) => {
 		return ! emptyData.test( dataEntry ) && ! userPattern.test( dataEntry );
 	} ).reduce( ( dataCouples, couple ) => {
 		const split = couple.split( '=' );
-		dataCouples[ split [ 0 ] ] = split[ 1 ];
+		dataCouples[ decodeURIComponent( split [0].replace( plusSign, '%20' ) ) ] = decodeURIComponent( split[1].replace( plusSign, '%20' ) );
 
 		return dataCouples;
 	}, {} );
@@ -53,9 +57,32 @@ const replaceDataInRegex = ( regexString, data ) => {
 	return regexString;
 };
 
+const recursiveDecode = ( value ) => {
+	const plusSign = /\+/g;
+
+	if ( Array.isArray( value ) ) {
+		return value.map( ( v ) => {
+			return typeof v === 'string' ? he.decode( v ).replace( plusSign, ' ' ) : v;
+		} );
+	}
+
+	if ( typeof value === 'object' ) {
+		for ( const prop in Object.keys( value ) ) {
+			if ( ! value.hasOwnProperty( prop ) ) {
+				continue;
+			}
+			value[prop] = typeof  value === 'string' ? he.decode( value[prop] ).replace( plusSign, ' ' ) : value;
+		}
+		return value;
+	}
+
+	return typeof  value === 'string' ? he.decode( value ).replace( plusSign, ' ' ) : value;
+};
+
 module.exports = {
 	titleize,
 	statusToColor,
 	parseQuery,
 	replaceDataInRegex,
+	recursiveDecode
 };
