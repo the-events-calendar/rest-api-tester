@@ -1,7 +1,7 @@
 {
   "name": "rest-api-tester",
   "productName": "Modern Tribe REST API Tester",
-  "version": "0.1.0",
+  "version": "0.1.2",
   "author": "Modern Tribe, Inc.",
   "description": "Test WordPress REST APIs from within WordPress",
   "license": "GPL-2.0+",
