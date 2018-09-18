@@ -3,7 +3,7 @@
 Plugin Name: REST API Tester
 Plugin URI: https://tri.be/
 Description: Test WordPress REST APIs from within WordPress
-Version: 0.1.0
+Version: 0.1.2
 Author: Modern Tribe, Inc.
 */
 
@@ -31,7 +31,7 @@ function mtrat( $classOrInterface = null ) {
 function mtrat_init() {
 	$container = mtrat();
 
-	$container->setVar( 'version', '0.1.0' );
+	$container->setVar( 'version', '0.1.2' );
 	$container->setVar( 'main-file', __FILE__ );
 	$container->setVar( 'main-dir', dirname( __FILE__ ) );
 	$container->setVar( 'templates', dirname( __FILE__ ) . '/src/templates' );
