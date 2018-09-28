@@ -45,6 +45,13 @@ const RequestForm = function( { children, nonce, restUrl, method, onRequestSubmi
 			data: data,
 		};
 
+		// DELETE requests need to send their data as part of the URL args.
+		if ( 'delete' === method ) {
+			restUrl += '?' + $.param( data );
+		} else {
+			settings.data = data;
+		}
+
 		$.ajax( restUrl, settings ).then( onSuccess, onFailure );
 	};
 
