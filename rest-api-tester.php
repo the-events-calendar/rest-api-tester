@@ -5,6 +5,7 @@ Plugin URI: https://tri.be/
 Description: Test WordPress REST APIs from within WordPress
 Version: 0.1.2
 Author: Modern Tribe, Inc.
+GitHub Plugin URI: https://github.com/moderntribe/rest-api-tester
 */
 
 include 'src/autoload.php';
