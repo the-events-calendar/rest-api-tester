@@ -10,8 +10,8 @@
     "url": "git://github.com/moderntribe/rest-api-tester.git"
   },
   "scripts": {
-    "build": "babel assets/js/src -d assets/js/dist",
-    "watch": "run-when-changed --watch 'src/*.js' --watch='src/**/*.js' --watch='tests/**/*.js' --exec 'npm run-script build'",
+    "build": "webpack -p",
+    "watch": "webpack -d --watch",
     "test": "jest"
   },
   "devDependencies": {
