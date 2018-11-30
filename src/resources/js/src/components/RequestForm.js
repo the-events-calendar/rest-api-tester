@@ -35,7 +35,7 @@ const RequestForm = function( { children, nonce, restUrl, method, onRequestSubmi
 
 		onRequestSubmit();
 
-		const settings = {
+		var settings = {
 			accepts: 'application/json',
 			method: method,
 			beforeSend: function( xhr ) {
@@ -46,10 +46,10 @@ const RequestForm = function( { children, nonce, restUrl, method, onRequestSubmi
 		};
 
 		// DELETE requests need to send their data as part of the URL args.
-		if ( 'delete' === method ) {
+		if ( 'delete' === method.toLowerCase() ) {
 			restUrl += '?' + $.param( data );
-		} else {
-			settings.data = data;
+
+			settings.data = {};
 		}
 
 		$.ajax( restUrl, settings ).then( onSuccess, onFailure );
