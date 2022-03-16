@@ -6,7 +6,7 @@
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
         'reference' => '9babd9938fca546a7b11bc61457b29e3ed8949a2',
-        'name' => 'the-events-calendar/rest-api-tester',
+        'name' => 'moderntribe/rest-api-tester',
         'dev' => true,
     ),
     'versions' => array(
@@ -19,7 +19,7 @@
             'reference' => '591eadfe768d931d3a0d522069c0924d668aa35e',
             'dev_requirement' => false,
         ),
-        'the-events-calendar/rest-api-tester' => array(
+        'moderntribe/rest-api-tester' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
             'type' => 'wordpress-plugin',
