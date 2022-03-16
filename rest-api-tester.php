@@ -1,11 +1,11 @@
 <?php
 /*
 Plugin Name: REST API Tester
-Plugin URI: https://tri.be/
+Plugin URI: https://theeventscalendar.com/
 Description: Test WordPress REST APIs from within WordPress
 Version: 0.1.3
-Author: Modern Tribe, Inc.
-GitHub Plugin URI: https://github.com/moderntribe/rest-api-tester
+Author: The Events Calendar
+GitHub Plugin URI: https://github.com/the-events-calendar/rest-api-tester
 */
 
 include 'src/autoload.php';

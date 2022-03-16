@@ -1,14 +1,9 @@
 {
-    "_readme": [
-        "This file locks the dependencies of your project to a known state",
-        "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
-        "This file is @generated automatically"
-    ],
-    "content-hash": "0692a2a0d8f5cdf2fbef671e9df5e207",
     "packages": [
         {
             "name": "lucatume/di52",
             "version": "2.1.5",
+            "version_normalized": "2.1.5.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/lucatume/di52.git",
@@ -28,7 +23,9 @@
                 "phpunit/phpunit-mock-objects-php52": "dev-1.1.0-php52",
                 "phpunit/phpunit-php52": "dev-3.6.12-php52"
             },
+            "time": "2021-12-20T12:52:26+00:00",
             "type": "library",
+            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "tad_DI52_": [
@@ -51,11 +48,12 @@
                 "issues": "https://github.com/lucatume/di52/issues",
                 "source": "https://github.com/lucatume/di52/tree/2.1.5"
             },
-            "time": "2021-12-20T12:52:26+00:00"
+            "install-path": "../lucatume/di52"
         },
         {
             "name": "xrstf/composer-php52",
             "version": "v1.0.20",
+            "version_normalized": "1.0.20.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/composer-php52/composer-php52.git",
@@ -67,12 +65,14 @@
                 "reference": "bd41459d5e27df8d33057842b32377c39e97a5a8",
                 "shasum": ""
             },
+            "time": "2016-04-16T21:52:24+00:00",
             "type": "library",
             "extra": {
                 "branch-alias": {
                     "dev-default": "1.x-dev"
                 }
             },
+            "installation-source": "dist",
             "autoload": {
                 "psr-0": {
                     "xrstf\\Composer52": "lib/"
@@ -82,20 +82,9 @@
             "license": [
                 "MIT"
             ],
-            "support": {
-                "issues": "https://github.com/composer-php52/composer-php52/issues",
-                "source": "https://github.com/composer-php52/composer-php52"
-            },
-            "time": "2016-04-16T21:52:24+00:00"
+            "install-path": "../xrstf/composer-php52"
         }
     ],
-    "packages-dev": [],
-    "aliases": [],
-    "minimum-stability": "stable",
-    "stability-flags": [],
-    "prefer-stable": false,
-    "prefer-lowest": false,
-    "platform": [],
-    "platform-dev": [],
-    "plugin-api-version": "2.2.0"
+    "dev": true,
+    "dev-package-names": []
 }

@@ -1,13 +1,13 @@
 {
   "name": "rest-api-tester",
-  "productName": "Modern Tribe REST API Tester",
+  "productName": "The Events Calendar REST API Tester",
   "version": "0.1.3",
-  "author": "Modern Tribe, Inc.",
+  "author": "The Events Calendar",
   "description": "Test WordPress REST APIs from within WordPress",
   "license": "GPL-2.0+",
   "repository": {
     "type": "git",
-    "url": "git://github.com/moderntribe/rest-api-tester.git"
+    "url": "git://github.com/the-events-calendar/rest-api-tester.git"
   },
   "scripts": {
     "build": "webpack -p",
