@@ -15,7 +15,7 @@
     "test": "jest"
   },
   "devDependencies": {
-    "ajv": "^6.6.1",
+    "ajv": "^6.12.3",
     "babel": "^6.5.2",
     "babel-cli": "^6.9.0",
     "babel-eslint": "^8.2.6",
