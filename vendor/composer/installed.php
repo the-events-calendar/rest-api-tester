@@ -1,0 +1,41 @@
+<?php return array(
+    'root' => array(
+        'pretty_version' => 'dev-main',
+        'version' => 'dev-main',
+        'type' => 'wordpress-plugin',
+        'install_path' => __DIR__ . '/../../',
+        'aliases' => array(),
+        'reference' => '9babd9938fca546a7b11bc61457b29e3ed8949a2',
+        'name' => 'moderntribe/rest-api-tester',
+        'dev' => true,
+    ),
+    'versions' => array(
+        'lucatume/di52' => array(
+            'pretty_version' => '2.1.5',
+            'version' => '2.1.5.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../lucatume/di52',
+            'aliases' => array(),
+            'reference' => '591eadfe768d931d3a0d522069c0924d668aa35e',
+            'dev_requirement' => false,
+        ),
+        'moderntribe/rest-api-tester' => array(
+            'pretty_version' => 'dev-main',
+            'version' => 'dev-main',
+            'type' => 'wordpress-plugin',
+            'install_path' => __DIR__ . '/../../',
+            'aliases' => array(),
+            'reference' => '9babd9938fca546a7b11bc61457b29e3ed8949a2',
+            'dev_requirement' => false,
+        ),
+        'xrstf/composer-php52' => array(
+            'pretty_version' => 'v1.0.20',
+            'version' => '1.0.20.0',
+            'type' => 'library',
+            'install_path' => __DIR__ . '/../xrstf/composer-php52',
+            'aliases' => array(),
+            'reference' => 'bd41459d5e27df8d33057842b32377c39e97a5a8',
+            'dev_requirement' => false,
+        ),
+    ),
+);
