@@ -10,7 +10,7 @@
 
 <header>
 	<h1>
-		<?php esc_html_e('Modern Tribe REST API Tester', 'mtrat') ?>
+		<?php esc_html_e('The Events Calendar REST API Tester', 'mtrat') ?>
 	</h1>
 </header>
 
@@ -18,7 +18,7 @@
 </div>
 
 <footer>
-	<p>Made with love by Modern Tribe, Inc.</p>
+	<p>Made with love by The Events Calendar</p>
 </footer>
 
 
