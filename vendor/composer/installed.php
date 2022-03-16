@@ -5,8 +5,8 @@
         'type' => 'wordpress-plugin',
         'install_path' => __DIR__ . '/../../',
         'aliases' => array(),
-        'reference' => '9babd9938fca546a7b11bc61457b29e3ed8949a2',
-        'name' => 'moderntribe/rest-api-tester',
+        'reference' => '94ea372db8587cf397c46c951af1dd6cc04f58b1',
+        'name' => 'the-events-calendar/rest-api-tester',
         'dev' => true,
     ),
     'versions' => array(
@@ -19,13 +19,13 @@
             'reference' => '591eadfe768d931d3a0d522069c0924d668aa35e',
             'dev_requirement' => false,
         ),
-        'moderntribe/rest-api-tester' => array(
+        'the-events-calendar/rest-api-tester' => array(
             'pretty_version' => 'dev-main',
             'version' => 'dev-main',
             'type' => 'wordpress-plugin',
             'install_path' => __DIR__ . '/../../',
             'aliases' => array(),
-            'reference' => '9babd9938fca546a7b11bc61457b29e3ed8949a2',
+            'reference' => '94ea372db8587cf397c46c951af1dd6cc04f58b1',
             'dev_requirement' => false,
         ),
         'xrstf/composer-php52' => array(

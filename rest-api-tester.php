@@ -9,7 +9,7 @@ GitHub Plugin URI: https://github.com/the-events-calendar/rest-api-tester
 */
 
 include 'src/autoload.php';
-include 'vendor/autoload_52.php';
+include 'vendor/autoload.php';
 
 // after TEC
 add_action( 'plugins_loaded', 'mtrat_init', 99 );
